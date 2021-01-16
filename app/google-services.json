@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "994520671925",
+    "project_id": "connect-e060a",
+    "storage_bucket": "connect-e060a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:994520671925:android:28505065ff313c205280fc",
+        "android_client_info": {
+          "package_name": "com.spaghetti.connect"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "994520671925-dsd24ban5m1q67m7n3pfsntvl3h33pgr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAYoQIOMG3nJz_X_pe81IG9GWpJ-yzeCPU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "994520671925-dsd24ban5m1q67m7n3pfsntvl3h33pgr.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
