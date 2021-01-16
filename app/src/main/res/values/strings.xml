@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Connect</string>
+    <string name="main">Main</string>
+    <string name="bookmark">Bookmark</string>
+    <string name="clubs">Clubs</string>
+    <string name="profile">Profile</string>
+    <string name="home">Home</string>
+</resources>
