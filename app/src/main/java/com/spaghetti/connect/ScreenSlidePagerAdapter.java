@@ -1,10 +1,5 @@
 package com.spaghetti.connect;
 
-import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
@@ -12,7 +7,7 @@ import androidx.viewpager2.adapter.FragmentStateAdapter;
 import com.spaghetti.connect.mainFragments.bookmarkPage;
 import com.spaghetti.connect.mainFragments.clubsPage;
 import com.spaghetti.connect.mainFragments.homePage;
-import com.spaghetti.connect.mainFragments.profilePage;
+import com.spaghetti.connect.mainFragments.userprofilePage;
 
 class ScreenSlidePagerAdapter extends FragmentStateAdapter {
     public ScreenSlidePagerAdapter(FragmentActivity fa) {
@@ -29,7 +24,7 @@ class ScreenSlidePagerAdapter extends FragmentStateAdapter {
             case 2:
                 return new clubsPage();
             case 3:
-                return new profilePage();
+                return new userprofilePage();
         }
         throw new RuntimeException("Catastrophic error");
     }
