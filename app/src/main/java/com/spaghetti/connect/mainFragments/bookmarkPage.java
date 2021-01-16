@@ -2,11 +2,13 @@ package com.spaghetti.connect.mainFragments;
 
 import android.os.Bundle;
 
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.spaghetti.connect.R;
 
@@ -16,6 +18,8 @@ import com.spaghetti.connect.R;
  * create an instance of this fragment.
  */
 public class bookmarkPage extends Fragment {
+
+    private View view;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -61,6 +65,11 @@ public class bookmarkPage extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_bookmarkpage, container, false);
+        view = inflater.inflate(R.layout.fragment_bookmarkpage, container, false);
+
+        //TODO stuff
+
+
+        return view;
     }
 }
