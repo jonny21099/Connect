@@ -5,17 +5,23 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.fragment.app.Fragment;
+import androidx.viewpager2.widget.ViewPager2;
 
+import com.google.android.material.tabs.TabLayout;
 import com.spaghetti.connect.R;
+import com.spaghetti.connect.utility.TabSwitchAdapter;
 
-class clubProfilePage extends Fragment{
+public class clubProfilePage extends Fragment{
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
+
 
 
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+
+    View view;
 
     public clubProfilePage() {
         // Required empty public constructo
@@ -52,7 +58,8 @@ class clubProfilePage extends Fragment{
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragement_clubprofilepage, container, false);
+        view = inflater.inflate(R.layout.fragement_clubprofilepage, container, false);
+
 
         return view;
     }

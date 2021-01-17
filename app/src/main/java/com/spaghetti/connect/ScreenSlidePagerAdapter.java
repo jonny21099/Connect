@@ -11,6 +11,7 @@ import androidx.fragment.app.FragmentActivity;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 
 import com.spaghetti.connect.mainFragments.bookmarkPage;
+import com.spaghetti.connect.mainFragments.clubProfilePage;
 import com.spaghetti.connect.mainFragments.clubsPage;
 import com.spaghetti.connect.mainFragments.homePage;
 import com.spaghetti.connect.mainFragments.userprofilePage;
@@ -34,7 +35,7 @@ class ScreenSlidePagerAdapter extends FragmentStateAdapter {
             case 2:
                 return new clubsPage();
             case 3:
-                return new userprofilePage();
+                return new clubProfilePage();
         }
         throw new RuntimeException("Catastrophic error");
     }
