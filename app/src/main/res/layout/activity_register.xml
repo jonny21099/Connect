@@ -11,7 +11,7 @@
 
 
     <TextView
-        android:id="@+id/RegisterFont"
+        android:id="@+id/loginFont"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/prisma"
@@ -62,8 +62,8 @@
         android:inputType="textEmailAddress"
         android:textColorHint="#CCCCCC"
         android:textColor="#FFFFFF"
-        app:layout_constraintStart_toStartOf="@+id/RegisterFont"
-        app:layout_constraintTop_toBottomOf="@+id/RegisterFont" />
+        app:layout_constraintStart_toStartOf="@+id/loginFont"
+        app:layout_constraintTop_toBottomOf="@+id/loginFont" />
 
 
     <Button

@@ -88,7 +88,7 @@
                 android:visibility="invisible"/>
 
             <Button
-                android:id="@+id/button2"
+                android:id="@+id/login_button"
                 style="@style/Widget.AppCompat.Button.Borderless"
                 android:layout_width="174dp"
                 android:layout_height="47dp"

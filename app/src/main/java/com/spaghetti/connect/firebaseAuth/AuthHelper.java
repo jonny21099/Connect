@@ -4,8 +4,12 @@ import android.util.Log;
 
 import androidx.annotation.NonNull;
 
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.spaghetti.connect.data.BinarySignal;
+
+import org.jetbrains.annotations.NotNull;
 
 public class AuthHelper {
     private static final String tag = "AUTH";
@@ -40,6 +44,21 @@ public class AuthHelper {
         }).addOnFailureListener(e -> {
             Log.d("Register", e.toString());
             signal.broadcast(false);
+        });
+    }
+
+    public static void passwordReset(String email, @NotNull FirebaseAuth FA, BinarySignal signal) {
+        FA.sendPasswordResetEmail(email).addOnSuccessListener(new OnSuccessListener<Void>() {
+            @Override
+            public void onSuccess(Void aVoid) {
+                signal.broadcast(true);
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Log.d(tag, e.toString());
+                signal.broadcast(false);
+            }
         });
     }
 }

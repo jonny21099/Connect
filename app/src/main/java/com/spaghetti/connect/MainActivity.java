@@ -9,6 +9,7 @@ import android.os.Bundle;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.spaghetti.connect.firebaseAuth.AuthHelper;
+import com.spaghetti.connect.firestoreAdapters.FirebaseUserProfileAdapter;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -19,18 +20,20 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //AuthHelper.signOut(FirebaseAuth.getInstance());
 
-        if (getIntent().getBooleanExtra("Initalize User", false)) {
-            //TODO get user's name and stuff
+        // Create New User if coming from successful register screen
+        if (getIntent().getBooleanExtra("Initialize User", false)) {
+            FirebaseUserProfileAdapter FUA = new FirebaseUserProfileAdapter();
+            FUA.createNewUser(AuthHelper.getUserEmail(FirebaseAuth.getInstance()));
         }
 
         // check auth state
         if (!AuthHelper.signedIn(FirebaseAuth.getInstance())) {
-            //TODO change to log in
-            //Intent i = new Intent(MainActivity.this, Register.class);
-            //i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-            //startActivity(i);
-            //finishAffinity();
+            Intent i = new Intent(MainActivity.this, LogIn.class);
+            i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(i);
+            finishAffinity();
         }
 
         setContentView(R.layout.activity_main);
@@ -83,7 +86,5 @@ public class MainActivity extends AppCompatActivity {
             }
             return true;
         });
-
-
     }
 }
