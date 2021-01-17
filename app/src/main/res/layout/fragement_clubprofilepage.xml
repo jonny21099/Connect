@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:ndroid="http://schemas.android.com/apk/res-auto"
-    tools:context=".mainFragments.userprofilePage">
+    tools:context=".mainFragments.clubProfilePage">
     <com.android.volley.toolbox.NetworkImageView
         android:id="@+id/profile_club_image"
         android:layout_width="match_parent"
@@ -33,6 +33,7 @@
             android:layout_centerHorizontal="true"
             android:gravity="center_horizontal" />
         <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tabMode"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/profile_club_name"
@@ -55,6 +56,13 @@
                 android:text="Albums"
                 />
         </com.google.android.material.tabs.TabLayout>
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/profile_club_pager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/tabMode"
+            android:layout_gravity="bottom"
+            android:background="#FAFAFA"/>
 
     </RelativeLayout>
 
