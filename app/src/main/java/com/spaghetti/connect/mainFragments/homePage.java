@@ -19,6 +19,8 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.spaghetti.connect.R;
+import com.spaghetti.connect.data.Club;
+import com.spaghetti.connect.data.ObservableArrayList;
 import com.spaghetti.connect.data.Post;
 import com.spaghetti.connect.firestoreAdapters.FirebaseProfileAdapter;
 import com.spaghetti.connect.ui.recyclerViewAdapter.BookmarkRvViewAdapter;
@@ -26,6 +28,8 @@ import com.spaghetti.connect.ui.recyclerViewAdapter.HomePageViewAdapter;
 
 import java.util.ArrayList;
 import java.util.Map;
+import java.util.Observable;
+import java.util.Observer;
 
 public class homePage extends Fragment {
 
@@ -64,38 +68,27 @@ public class homePage extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
+        FirebaseProfileAdapter firebaseProfileAdapter = new FirebaseProfileAdapter();
+        ObservableArrayList<Post> observablePostList = new ObservableArrayList();
+
+        Observer OnCompleteLister = new Observer() {
+            @Override
+            public void update(Observable observable, Object o) {
+                ArrayList<Post> homeList = observablePostList.getList();
+                homepagePostAdapter = new HomePageViewAdapter(homeList);
+                homepagePostRcView.setAdapter(homepagePostAdapter);
+            }
+        };
+
+        observablePostList.addObserver(OnCompleteLister);
+        firebaseProfileAdapter.RetrieveAllPosts(observablePostList);
+
         // Inflate the layout for this fragment
         view = inflater.inflate(R.layout.fragment_homepage, container, false);
-
-        FirebaseProfileAdapter firebaseProfileAdapter = new FirebaseProfileAdapter();
-        ArrayList<Post> allPosts = firebaseProfileAdapter.getPosts();
-
-        //TODO: once sign in user is approved check if this works:
-        //ArrayList<Post> approvedPosts = firebaseProfileAdapter.checkPost(null, false, allPosts);
-
-        /*TODO: display the approved posts*/
-
-        //Post p = new Post("Test", "test", "test", "test");
-        ArrayList<Post> pp = new ArrayList<>();
-
-        Log.d("POST SIZE:", String.valueOf(allPosts.size()));
-        for (int i = 0 ; i < allPosts.size(); i++) {
-            pp.add(allPosts.get(i));
-        }
-
-        /*pp.add(p);
-        pp.add(p);
-        pp.add(p);
-        pp.add(p);
-        pp.add(p);
-        pp.add(p);*/
 
         homepagePostRcView = view.findViewById(R.id.recyclerView);
         homepageLayoutManager = new LinearLayoutManager(context);
         homepagePostRcView.setLayoutManager(homepageLayoutManager);
-
-        homepagePostAdapter = new HomePageViewAdapter(pp);
-        homepagePostRcView.setAdapter(homepagePostAdapter);
 
         return view;
     }
