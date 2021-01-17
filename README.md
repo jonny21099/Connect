@@ -5,6 +5,13 @@
 * App Name: Connect
 * Members: Anita Ferenc, Grace Mullane, Jonathan Martin, Junyao Cui, Kerry Cao
 
+### Contribution
+Anita Ferenc: Home Screen Activity Feed
+Grace Mullane: Login, Register and Password Reset
+Jonathan Martin: Club Browsing Catalog
+Junyao Cui: Club Profile and User Profile
+Kerry Cao: Bookmark Screen, FireStore Adapter
+
 ### How to run project
 
 1. Go to Android Studio: https://developer.android.com/studio
