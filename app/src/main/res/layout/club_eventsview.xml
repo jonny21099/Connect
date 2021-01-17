@@ -6,60 +6,12 @@
     android:layout_height="wrap_content"
     android:layout_margin="10dp"
     android:elevation="20dp"
-    android:orientation="vertical"
-    tools:context=".ClubEventsFragment">
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="5dp"
-        android:layout_marginBottom="10dp">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:textSize="32sp"
-            android:text="Club Email:"
-            android:textAlignment="center" />
-        <TextView
-            android:id="@+id/profile_club_email"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:textSize="32sp"
-
-            android:textAlignment="center" />
-    </LinearLayout>
-
+    android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:textSize="32sp"
-            android:text="Club Description:"
-            android:textAlignment="center" />
-        <TextView
-            android:id="@+id/profile_club_description"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:layout_marginStart="10dp"
-            android:textSize="32sp"
-            android:textAlignment="center" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
         android:layout_marginTop="5dp"
         android:layout_marginBottom="10dp">
         <Button
@@ -68,6 +20,14 @@
             android:layout_marginStart="60dp"
             android:textSize="32sp"
             android:text="Create Post"
+            android:textAlignment="center" />
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="60dp"
+            android:textSize="32sp"
+            android:text="view Post"
             android:textAlignment="center" />
     </LinearLayout>
 

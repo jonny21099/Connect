@@ -51,10 +51,7 @@ public class clubProfilePage extends Fragment{
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
 
-        return inflater.inflate(R.layout.fragement_clubprofilepage, container, false);
-    }
-    @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragement_clubprofilepage, container, false);
         String[] titles = new String[]{"Details", "Events"};
         tabSwitchAdapter = new TabSwitchAdapter(this);
         viewPager = view.findViewById(R.id.profile_club_pager);
@@ -63,8 +60,20 @@ public class clubProfilePage extends Fragment{
         new TabLayoutMediator(tabLayout, viewPager,
                 (tab, position) -> tab.setText(titles[position])
         ).attach();
-
+        return view;
     }
+//    @Override
+//    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+//        String[] titles = new String[]{"Details", "Events"};
+//        tabSwitchAdapter = new TabSwitchAdapter(this);
+//        viewPager = view.findViewById(R.id.profile_club_pager);
+//        viewPager.setAdapter(tabSwitchAdapter);
+//        TabLayout tabLayout = view.findViewById(R.id.tabMode);
+//        new TabLayoutMediator(tabLayout, viewPager,
+//                (tab, position) -> tab.setText(titles[position])
+//        ).attach();
+//
+//    }
 
 
     public static class TabSwitchAdapter extends FragmentStateAdapter {
@@ -78,13 +87,24 @@ public class clubProfilePage extends Fragment{
         @Override
         public Fragment createFragment(int position) {
             // Return a NEW fragment instance in createFragment(int)
-            Fragment fragment = new ClubDetailsFragment();
-            Bundle args = new Bundle();
-            // Our object is just an integer :-P
-            args.putString(ClubDetailsFragment.ARG_EM, "123@email.com");
-            args.putString(ClubDetailsFragment.ARG_DS, "123456");
-            fragment.setArguments(args);
-            return fragment;
+            switch (position){
+                case 0:
+                    Fragment fragment = new ClubDetailsFragment();
+                    Bundle args = new Bundle();
+                    // Our object is just an integer :-P
+                    args.putString(ClubDetailsFragment.ARG_EM, "123@email.com");
+                    args.putString(ClubDetailsFragment.ARG_DS, "123456");
+                    fragment.setArguments(args);
+                    return fragment;
+                case 1:
+                    //                    Bundle args1 = new Bundle();
+//                    // Our object is just an integer :-P
+//                    args1.putString(ClubDetailsFragment.ARG_EM, "123@email.com");
+//                    args1.putString(ClubDetailsFragment.ARG_DS, "123456");
+//                    fragment1.setArguments(args1);
+                    return new ClubEventsFragment();
+            }
+            throw new RuntimeException("Catastrophic error");
         }
 
         @Override
@@ -123,6 +143,24 @@ public class clubProfilePage extends Fragment{
 //        f.setArguments(b);
 //        return f;
 //    }
+    }
+    public static class ClubEventsFragment extends Fragment {
+
+        @Override
+        public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+
+            return inflater.inflate(R.layout.club_eventsview, container, false);
+        }
+
+//        public static com.spaghetti.connect.ClubEventsFragment newInstance(String email, String des) {
+//
+//            com.spaghetti.connect.ClubEventsFragment f = new com.spaghetti.connect.ClubEventsFragment();
+//            Bundle b = new Bundle();
+//            b.putString("em", email);
+//            b.putString("ds", des);
+//            f.setArguments(b);
+//            return f;
+//        }
     }
 
 }
