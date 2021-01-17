@@ -16,7 +16,7 @@
         android:fontFamily="@font/prisma"
         android:text="Register"
         android:textColor="#CCCCCC"
-
+        android:textColorHint="#CCCCCC"
         android:textAlignment="center"
         android:textSize="50sp"
         app:layout_constraintBottom_toTopOf="@+id/register_name"
@@ -31,6 +31,7 @@
         android:ems="10"
         android:inputType="textPersonName"
         android:hint="Name"
+        android:textColor="#CCCCCC"
         android:textColorHint="#CCCCCC"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.502"
@@ -43,6 +44,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:hint="Password"
+        android:textColor="#CCCCCC"
         android:textColorHint="#CCCCCC"
         android:ems="10"
         android:inputType="textPassword"
@@ -56,6 +58,7 @@
         android:ems="10"
         android:hint="Confirm Password"
         android:inputType="textPassword"
+        android:textColor="#CCCCCC"
         android:textColorHint="#CCCCCC"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -79,7 +82,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Begin Clubbing"
-        android:textColor="#007B28"
+        android:textColor="#CCCCCC"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
@@ -87,14 +90,6 @@
         app:layout_constraintTop_toBottomOf="@+id/confirm_password"
         app:layout_constraintVertical_bias="0.07" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:text="Already have an account? Back to login"
-        android:textColor="#CCCCCC"
-        app:layout_constraintEnd_toEndOf="@+id/register_signup_btn"
-        app:layout_constraintStart_toStartOf="@+id/register_signup_btn"
-        app:layout_constraintTop_toBottomOf="@+id/register_signup_btn" />
+  p_btn" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
