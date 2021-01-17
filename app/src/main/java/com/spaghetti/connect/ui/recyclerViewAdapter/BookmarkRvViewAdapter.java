@@ -15,7 +15,7 @@ import com.spaghetti.connect.data.Post;
 
 import java.util.ArrayList;
 
-public class BookmarkRCA extends RecyclerView.Adapter<BookmarkRCA.PostViewHolder> {
+public class BookmarkRvViewAdapter extends RecyclerView.Adapter<BookmarkRvViewAdapter.PostViewHolder> {
 
     ArrayList<Post> data;
 
@@ -34,12 +34,12 @@ public class BookmarkRCA extends RecyclerView.Adapter<BookmarkRCA.PostViewHolder
         }
     }
 
-    public BookmarkRCA(ArrayList<Post> data) {
+    public BookmarkRvViewAdapter(ArrayList<Post> data) {
         this.data = data;
     }
 
     @Override
-    public BookmarkRCA.PostViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public BookmarkRvViewAdapter.PostViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         // create a new view
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.postviewholder, parent, false);
         return new PostViewHolder(v);
