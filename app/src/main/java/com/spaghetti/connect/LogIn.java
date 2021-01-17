@@ -2,6 +2,7 @@ package com.spaghetti.connect;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -52,6 +53,7 @@ public class LogIn extends AppCompatActivity {
                     finishAffinity();
                 } else {
                     Toast.makeText(LogIn.this, "Invalid Username or Password", Toast.LENGTH_LONG).show();
+
                 }
             };
             signal.addObserver(onCompleteListener);
