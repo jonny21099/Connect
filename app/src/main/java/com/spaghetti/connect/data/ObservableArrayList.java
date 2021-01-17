@@ -23,4 +23,8 @@ public class ObservableArrayList<T> extends Observable implements Serializable {
     public void add(T item){
         list.add(item);
     }
+
+    public void clear() {
+        list.clear();
+    }
 }

@@ -14,6 +14,8 @@ import com.spaghetti.connect.R;
 import com.spaghetti.connect.data.Post;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 public class BookmarkRvViewAdapter extends RecyclerView.Adapter<BookmarkRvViewAdapter.PostViewHolder> {
 
@@ -61,5 +63,12 @@ public class BookmarkRvViewAdapter extends RecyclerView.Adapter<BookmarkRvViewAd
     @Override
     public int getItemCount() {
         return data.size();
+    }
+
+    public void update() {
+        if (getItemCount() > 1) {
+            data.sort((o1, o2) -> o2.getCreationTime().compareTo(o1.getCreationTime()));
+        }
+        notifyDataSetChanged();
     }
 }
