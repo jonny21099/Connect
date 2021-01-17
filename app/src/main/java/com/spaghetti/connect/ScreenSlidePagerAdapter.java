@@ -1,5 +1,6 @@
 package com.spaghetti.connect;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,8 +16,12 @@ import com.spaghetti.connect.mainFragments.homePage;
 import com.spaghetti.connect.mainFragments.profilePage;
 
 class ScreenSlidePagerAdapter extends FragmentStateAdapter {
-    public ScreenSlidePagerAdapter(FragmentActivity fa) {
+    Context c;
+
+    public ScreenSlidePagerAdapter(FragmentActivity fa, Context c) {
         super(fa);
+
+        this.c = c;
     }
 
     @Override
@@ -25,7 +30,7 @@ class ScreenSlidePagerAdapter extends FragmentStateAdapter {
             case 0:
                 return new homePage();
             case 1:
-                return new bookmarkPage();
+                return new bookmarkPage(c);
             case 2:
                 return new clubsPage();
             case 3:

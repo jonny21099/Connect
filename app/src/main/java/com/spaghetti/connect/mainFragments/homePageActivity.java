@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
+import com.spaghetti.connect.R;
+
 public class homePageActivity extends AppCompatActivity {
 
     @Override
