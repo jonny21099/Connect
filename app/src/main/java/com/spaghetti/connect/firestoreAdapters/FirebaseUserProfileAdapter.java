@@ -29,22 +29,55 @@ public class FirebaseUserProfileAdapter {
     }
 
     public void getUserBookmarks(String email, ObservableArrayList<String> reference) {
-        db.collection("UserProfile").document(email).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-            @Override
-            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                if (task.isSuccessful()) {
-                    DocumentSnapshot ds = task.getResult();
+        db.collection("UserProfile").document(email).get().addOnCompleteListener(task -> {
+            if (task.isSuccessful()) {
+                DocumentSnapshot ds = task.getResult();
 
-                    List<String> bookmarks = (List<String>) ds.get("bookmark");
+                List<String> bookmarks = (List<String>) ds.get("bookmark");
 
-                    reference.clear();
+                reference.clear();
 
-                    for (String postRef : bookmarks) {
-                        reference.add(postRef);
-                    }
-
-                    reference.notifyChange();
+                for (String postRef : bookmarks) {
+                    reference.add(postRef);
                 }
+
+                reference.notifyChange();
+            }
+        });
+    }
+
+    public void getUserSubscriptions(String email, ObservableArrayList<String> reference) {
+        db.collection("UserProfile").document(email).get().addOnCompleteListener(task -> {
+            if (task.isSuccessful()) {
+                DocumentSnapshot ds = task.getResult();
+
+                List<String> bookmarks = (List<String>) ds.get("subscription");
+
+                reference.clear();
+
+                for (String postRef : bookmarks) {
+                    reference.add(postRef);
+                }
+
+                reference.notifyChange();
+            }
+        });
+    }
+
+    public void getClubPostRefs(String clubId, ObservableArrayList<String> reference) {
+        db.collection("ClubProfile").document(clubId).get().addOnCompleteListener(task -> {
+            if (task.isSuccessful()) {
+                DocumentSnapshot ds = task.getResult();
+
+                List<String> bookmarks = (List<String>) ds.get("Posts");
+
+                reference.clear();
+
+                for (String postRef : bookmarks) {
+                    reference.add(postRef);
+                }
+
+                reference.notifyChange();
             }
         });
     }

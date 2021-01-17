@@ -70,7 +70,7 @@ public class HomePageViewAdapter  extends RecyclerView.Adapter<HomePageViewAdapt
         holder.date.setText(p.getEventDate().toString());
 
         // check if it is an announcement or a post
-        if (p.isEvent() == true){
+        if (p.isEvent()){
             holder.attend.setVisibility(VISIBLE);
             holder.bookmark.setVisibility(VISIBLE);
         } else {
