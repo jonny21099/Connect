@@ -3,6 +3,7 @@ package com.spaghetti.connect.ui.recyclerViewAdapter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -11,11 +12,14 @@ import com.spaghetti.connect.R;
 import com.spaghetti.connect.data.Post;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-public class HomePageViewAdapter  extends RecyclerView.Adapter<BookmarkRvViewAdapter.PostViewHolder> {
+import static android.view.View.VISIBLE;
+
+public class HomePageViewAdapter  extends RecyclerView.Adapter<HomePageViewAdapter.PostViewHolder> {
 
     ArrayList<Post> data;
 
@@ -24,6 +28,11 @@ public class HomePageViewAdapter  extends RecyclerView.Adapter<BookmarkRvViewAda
         ImageView image;
         TextView title;
         TextView content;
+        TextView club;
+        TextView date;
+
+        Button attend;
+        Button bookmark;
 
         //TODO: I DONT KNOW IF I SHOUDL CHANGE THIS?? WILL THIS CAUSE PROBLEMS???
         PostViewHolder(View requestView) {
@@ -31,7 +40,11 @@ public class HomePageViewAdapter  extends RecyclerView.Adapter<BookmarkRvViewAda
             image = requestView.findViewById(R.id.postViewHolderImage);
             layout = requestView.findViewById(R.id.postViewHolderLayout);
             title = requestView.findViewById(R.id.postTitle);
-            content = requestView.findViewById(R.id.clubName);
+            club = requestView.findViewById(R.id.clubName);
+            date = requestView.findViewById(R.id.postDate);
+            content = requestView.findViewById(R.id.postDesc);
+            bookmark = requestView.findViewById(R.id.bookmarkButton);
+            attend = requestView.findViewById(R.id.attendButton);
         }
     }
 
@@ -40,20 +53,30 @@ public class HomePageViewAdapter  extends RecyclerView.Adapter<BookmarkRvViewAda
     }
 
     @Override
-    public BookmarkRvViewAdapter.PostViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public HomePageViewAdapter.PostViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         // create a new view
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.postviewholder, parent, false);
-        return new BookmarkRvViewAdapter.PostViewHolder(v);
+        return new HomePageViewAdapter.PostViewHolder(v);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull BookmarkRvViewAdapter.PostViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull HomePageViewAdapter.PostViewHolder holder, int position) {
         Post p = data.get(position);
 
         holder.content.setText(p.getContent());
         holder.title.setText(p.getTitle());
         holder.image.setImageBitmap(p.getImage());
+        holder.club.setText(p.getClub());
+        holder.date.setText(p.getEventDate().toString());
 
+        // check if it is an announcement or a post
+        if (p.isEvent() == true){
+            holder.attend.setVisibility(VISIBLE);
+            holder.bookmark.setVisibility(VISIBLE);
+        } else {
+            holder.attend.setVisibility(View.INVISIBLE);
+            holder.bookmark.setVisibility(View.INVISIBLE);
+        }
         holder.layout.setOnClickListener(v -> {
             // TODO
         });

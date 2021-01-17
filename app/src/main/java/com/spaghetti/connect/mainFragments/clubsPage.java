@@ -10,7 +10,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.spaghetti.connect.data.ObservableArrayList;
 import com.spaghetti.connect.R;
 import com.spaghetti.connect.data.Club;
@@ -30,6 +32,7 @@ import java.util.Observer;
 public class clubsPage extends Fragment {
     private View view;
     private Context c;
+    FirebaseFirestore db;
 
     RecyclerView clubsRcView;
     RecyclerView.Adapter clubsAdapter;
@@ -94,7 +97,6 @@ public class clubsPage extends Fragment {
 
         // Inflate the layout for this fragment
         view = inflater.inflate(R.layout.fragment_clubspage, container, false);
-
         clubsRcView = view.findViewById(R.id.clubRecyclerView);
         clubsLayoutManager = new LinearLayoutManager(c);
         clubsRcView.setLayoutManager(clubsLayoutManager);

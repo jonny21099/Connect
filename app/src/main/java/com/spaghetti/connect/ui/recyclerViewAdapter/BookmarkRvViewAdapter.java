@@ -50,7 +50,6 @@ public class BookmarkRvViewAdapter extends RecyclerView.Adapter<BookmarkRvViewAd
     @Override
     public void onBindViewHolder(@NonNull PostViewHolder holder, int position) {
         Post p = data.get(position);
-
         holder.content.setText(p.getContent());
         holder.title.setText(p.getTitle());
         holder.image.setImageBitmap(p.getImage());
