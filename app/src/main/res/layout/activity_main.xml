@@ -22,6 +22,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
         android:layout_weight='0'
+        app:itemIconTint="@color/selector"
         app:menu="@menu/bottom_navigation_menu" />
 
 </LinearLayout>
