@@ -6,6 +6,7 @@ import androidx.annotation.NonNull;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.Timestamp;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -27,6 +28,7 @@ import com.spaghetti.connect.data.Post;
 import com.spaghetti.connect.firebaseAuth.AuthHelper;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Map;
 import java.util.Observable;
 import java.util.concurrent.TimeUnit;
@@ -63,10 +65,19 @@ public class FirebaseProfileAdapter {
                                 String title = documentSnapshot.get("Title").toString();
                                 String club = documentSnapshot.get("Club").toString();
                                 String content = documentSnapshot.get("Content").toString();
-                                //Bitmap image = (Bitmap) documentSnapshot.get("Image");
-
+                                Date creationTime = documentSnapshot.getDate("Date Created");
+                                Date eventDate = documentSnapshot.getDate("Event Date");
+                                Log.d("Test1: ", "test");
+                                Boolean isEvent = (Boolean) documentSnapshot.getBoolean("isEvent");
+                               // Boolean isEvent = true;
+                                Log.d("Bool: ", isEvent.toString());
+                                Bitmap image = null;
                                 // create a new Post object of the Post in the database
-                                Post post = new Post(id, title, club, content);
+                                Post post = new Post(id, title, content, club, image, creationTime, eventDate);
+                                post.setEvent(isEvent);
+
+                                post.mark();
+
                                 postList.add(post);
                             }
                             postList.notifyChange();
