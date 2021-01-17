@@ -5,4 +5,11 @@
     <string name="clubs">Clubs</string>
     <string name="profile">Profile</string>
     <string name="home">Home</string>
+    <string name="placeholder">placeholder</string>
+    <string name="post_media">Post Media</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="university_email">University Email</string>
+    <string name="begin_clubbing">Begin Clubbing</string>
+    <string name="already_have_an_account_back_to_login">Already have an account? Back to login</string>
+    <string name="register">Register</string>
 </resources>
