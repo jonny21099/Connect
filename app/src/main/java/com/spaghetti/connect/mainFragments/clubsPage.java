@@ -1,7 +1,6 @@
 package com.spaghetti.connect.mainFragments;
 
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -12,14 +11,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.spaghetti.connect.ClubsPageActivity;
+import com.spaghetti.connect.data.ObservableArrayList;
 import com.spaghetti.connect.R;
 import com.spaghetti.connect.data.Club;
-import com.spaghetti.connect.data.Post;
-import com.spaghetti.connect.ui.recyclerViewAdapter.BookmarkRCA;
+import com.spaghetti.connect.firestoreAdapters.FirebaseProfileAdapter;
 import com.spaghetti.connect.ui.recyclerViewAdapter.ClubsRCA;
 
 import java.util.ArrayList;
+import java.util.Observable;
+import java.util.Observer;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -78,12 +78,19 @@ public class clubsPage extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        Club club = new Club("UaoC", "something@ualberta.ca", "this is a club to");
-        ArrayList<Club> clubList = new ArrayList<>();
+        FirebaseProfileAdapter adapter = new FirebaseProfileAdapter();
+        ObservableArrayList<Club> observableClubList = new ObservableArrayList();
+        Observer OnCompleteListener = new Observer() {
+            @Override
+            public void update(Observable observable, Object o) {
+                ArrayList<Club> clubList = observableClubList.getList();
+                clubsAdapter = new ClubsRCA(clubList);
+                clubsRcView.setAdapter(clubsAdapter);
+            }
+        };
 
-        clubList.add(club);
-        clubList.add(club);
-
+        observableClubList.addObserver(OnCompleteListener);
+        adapter.RetrieveAllClubs(observableClubList);
 
         // Inflate the layout for this fragment
         view = inflater.inflate(R.layout.fragment_clubspage, container, false);
@@ -91,10 +98,6 @@ public class clubsPage extends Fragment {
         clubsRcView = view.findViewById(R.id.clubRecyclerView);
         clubsLayoutManager = new LinearLayoutManager(c);
         clubsRcView.setLayoutManager(clubsLayoutManager);
-
-        clubsAdapter = new ClubsRCA(clubList);
-        clubsRcView.setAdapter(clubsAdapter);
-
 
         return view;
     }
