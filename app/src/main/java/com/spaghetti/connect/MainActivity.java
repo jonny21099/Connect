@@ -3,9 +3,12 @@ package com.spaghetti.connect;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager2.widget.ViewPager2;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.auth.FirebaseAuth;
+import com.spaghetti.connect.firebaseAuth.AuthHelper;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -16,6 +19,20 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        if (getIntent().getBooleanExtra("Initalize User", false)) {
+            //TODO get user's name and stuff
+        }
+
+        // check auth state
+        if (!AuthHelper.signedIn(FirebaseAuth.getInstance())) {
+            //TODO change to log in
+            //Intent i = new Intent(MainActivity.this, Register.class);
+            //i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            //startActivity(i);
+            //finishAffinity();
+        }
+
         setContentView(R.layout.activity_main);
 
         // configure viewpager

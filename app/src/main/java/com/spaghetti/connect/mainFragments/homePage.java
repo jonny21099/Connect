@@ -21,9 +21,11 @@ import android.widget.Toast;
 import com.spaghetti.connect.R;
 import com.spaghetti.connect.RecyclerViewAdapter;
 import com.spaghetti.connect.data.Post;
-import com.spaghetti.connect.ui.recyclerViewAdapter.BookmarkRCA;
+import com.spaghetti.connect.firestoreAdapters.FirebaseProfileAdapter;
+import com.spaghetti.connect.ui.recyclerViewAdapter.BookmarkRvViewAdapter;
 
 import java.util.ArrayList;
+import java.util.Map;
 
 public class homePage extends Fragment {
 
@@ -75,11 +77,22 @@ public class homePage extends Fragment {
         // Inflate the layout for this fragment
         view = inflater.inflate(R.layout.fragment_homepage, container, false);
 
+        /* TODO: get the users */
+
+        FirebaseProfileAdapter firebaseProfileAdapter = new FirebaseProfileAdapter();
+        //ArrayList<Map> arrayList = firebaseProfileAdapter.getPosts();
+
+        //get posts;
+
+        //check all posts (user, all the posts);
+
+        Log.d("IN HOMEPAGE","HERRRE");
         homepagePostRcView = view.findViewById(R.id.recyclerView);
         homepageLayoutManager = new LinearLayoutManager(context);
         homepagePostRcView.setLayoutManager(homepageLayoutManager);
 
-        homepagePostAdapter = new BookmarkRCA(pp);
+        /*TODO: write separate Bookmark for homepage */
+        homepagePostAdapter = new BookmarkRvViewAdapter(pp);
         homepagePostRcView.setAdapter(homepagePostAdapter);
 
         return view;
