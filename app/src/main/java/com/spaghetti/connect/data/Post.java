@@ -20,9 +20,10 @@ public class Post extends Observable {
     }
 
 
-    public Post(String id, String title, String content) {
+    public Post(String id, String title, String club, String content) {
         this.id = id;
         this.title = title;
+        this.club = club;
         this.content = content;
     }
 

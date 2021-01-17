@@ -51,7 +51,7 @@ public class bookmarkPage extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        Post p = new Post("Test", "test", "test");
+        Post p = new Post("Test", "test", "test", "test");
         ArrayList<Post> pp = new ArrayList<>();
 
         pp.add(p);

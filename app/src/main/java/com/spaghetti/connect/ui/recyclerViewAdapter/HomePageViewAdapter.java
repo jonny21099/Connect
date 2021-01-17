@@ -25,6 +25,7 @@ public class HomePageViewAdapter  extends RecyclerView.Adapter<BookmarkRvViewAda
         TextView title;
         TextView content;
 
+        //TODO: I DONT KNOW IF I SHOUDL CHANGE THIS?? WILL THIS CAUSE PROBLEMS???
         PostViewHolder(View requestView) {
             super(requestView);
             image = requestView.findViewById(R.id.postViewHolderImage);

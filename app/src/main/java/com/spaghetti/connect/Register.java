@@ -62,7 +62,7 @@ public class Register extends AppCompatActivity {
             if (signal.getState()) {
                 Toast.makeText(c, "Success", Toast.LENGTH_LONG).show();
                 Intent i = new Intent(Register.this, MainActivity.class);
-                i.putExtra("Initalize User", true);
+                i.putExtra("Initialize User", true);
                 startActivity(i);
                 finishAffinity();
             } else {
