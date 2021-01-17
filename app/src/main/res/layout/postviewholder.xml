@@ -76,7 +76,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/clubName" />
 
             <Button
-                android:id="@+id/button"
+                android:id="@+id/attendButton"
                 android:layout_width="175dp"
                 android:layout_height="47dp"
                 android:layout_marginBottom="16dp"
@@ -88,7 +88,7 @@
                 android:visibility="invisible"/>
 
             <Button
-                android:id="@+id/login_button"
+                android:id="@+id/bookmarkButton"
                 style="@style/Widget.AppCompat.Button.Borderless"
                 android:layout_width="174dp"
                 android:layout_height="47dp"
@@ -98,7 +98,7 @@
                 android:drawableTint="#FFFFFF"
                 android:foregroundTint="#FFFFFF"
                 android:shadowColor="#FFFFFF"
-                android:text="FAVOURITE"
+                android:text="BOOKMARK"
                 android:textColor="@color/purple_500"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"

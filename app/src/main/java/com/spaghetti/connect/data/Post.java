@@ -10,21 +10,24 @@ public class Post extends Observable {
     String content;
     String club;
     Bitmap image;
+    String date;
 
-    public Post(String id, String title, String club, String content, Bitmap image) {
+    public Post(String id, String title, String club, String content, Bitmap image, String date) {
         this.id = id;
         this.title = title;
         this.content = content;
         this.club = club;
         this.image = image;
+        this.date = date;
     }
 
 
-    public Post(String id, String title, String club, String content) {
+    public Post(String id, String title, String club, String content, String Date) {
         this.id = id;
         this.title = title;
         this.club = club;
         this.content = content;
+        this.date = date;
     }
 
     public void mark() {
@@ -68,4 +71,8 @@ public class Post extends Observable {
 
     public String getClub() { return club;}
 
+    public void setDate(String date) { this.date = date;}
+
+    public String getDate() { return date; }
+    }
 }

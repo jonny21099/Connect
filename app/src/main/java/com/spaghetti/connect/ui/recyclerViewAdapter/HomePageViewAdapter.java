@@ -15,7 +15,7 @@ import java.util.ArrayList;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-public class HomePageViewAdapter  extends RecyclerView.Adapter<BookmarkRvViewAdapter.PostViewHolder> {
+public class HomePageViewAdapter  extends RecyclerView.Adapter<HomePageViewAdapter.PostViewHolder> {
 
     ArrayList<Post> data;
 
@@ -24,6 +24,8 @@ public class HomePageViewAdapter  extends RecyclerView.Adapter<BookmarkRvViewAda
         ImageView image;
         TextView title;
         TextView content;
+        TextView club;
+        TextView date;
 
         //TODO: I DONT KNOW IF I SHOUDL CHANGE THIS?? WILL THIS CAUSE PROBLEMS???
         PostViewHolder(View requestView) {
@@ -31,7 +33,9 @@ public class HomePageViewAdapter  extends RecyclerView.Adapter<BookmarkRvViewAda
             image = requestView.findViewById(R.id.postViewHolderImage);
             layout = requestView.findViewById(R.id.postViewHolderLayout);
             title = requestView.findViewById(R.id.postTitle);
-            content = requestView.findViewById(R.id.clubName);
+            club = requestView.findViewById(R.id.clubName);
+            date = requestView.findViewById(R.id.postDate);
+            content = requestView.findViewById(R.id.postDesc);
         }
     }
 
@@ -40,19 +44,21 @@ public class HomePageViewAdapter  extends RecyclerView.Adapter<BookmarkRvViewAda
     }
 
     @Override
-    public BookmarkRvViewAdapter.PostViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public HomePageViewAdapter.PostViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         // create a new view
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.postviewholder, parent, false);
-        return new BookmarkRvViewAdapter.PostViewHolder(v);
+        return new HomePageViewAdapter.PostViewHolder(v);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull BookmarkRvViewAdapter.PostViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull HomePageViewAdapter.PostViewHolder holder, int position) {
         Post p = data.get(position);
 
         holder.content.setText(p.getContent());
         holder.title.setText(p.getTitle());
         holder.image.setImageBitmap(p.getImage());
+        holder.club.setText(p.getClub());
+        holder.date.setText(p.getDate());
 
         holder.layout.setOnClickListener(v -> {
             // TODO
