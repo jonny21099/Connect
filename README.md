@@ -5,5 +5,18 @@
 * Name: TBA
 * Members: Anita Ferenc, Grace Mullane, Jonathan Martin, Junyao Cui, Kerry Cao
 
-### Project Description
-##How to sign in 
+### How to run project
+
+Go to Android Studio: https://developer.android.com/studio
+
+Download Android Studio.
+
+Clone github repo using:
+
+```
+$ git clone https://github.com/yuqian5/Connect.git
+```
+
+Run code on emulator.
+
+
