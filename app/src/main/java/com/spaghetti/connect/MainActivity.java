@@ -20,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
 
         // configure viewpager
         vp = findViewById(R.id.pager);
-        pagerAdapter = new ScreenSlidePagerAdapter(this);
+        pagerAdapter = new ScreenSlidePagerAdapter(this, MainActivity.this);
         vp.setAdapter(pagerAdapter);
 
         vp.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {

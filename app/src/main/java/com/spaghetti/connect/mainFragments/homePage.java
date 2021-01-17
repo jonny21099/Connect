@@ -1,21 +1,38 @@
 package com.spaghetti.connect.mainFragments;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import android.os.Handler;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.spaghetti.connect.R;
+import com.spaghetti.connect.RecyclerViewAdapter;
+import com.spaghetti.connect.data.Post;
+import com.spaghetti.connect.ui.recyclerViewAdapter.BookmarkRCA;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link homePage#newInstance} factory method to
- * create an instance of this fragment.
- */
+import java.util.ArrayList;
+
 public class homePage extends Fragment {
+
+    private View view;
+    private Context context;
+
+    RecyclerView homepagePostRcView;
+    RecyclerView.Adapter homepagePostAdapter;
+    RecyclerView.LayoutManager homepageLayoutManager;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -26,31 +43,15 @@ public class homePage extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public homePage() {
+    public homePage(Context context) {
         // Required empty public constructor
-    }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment page1.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static homePage newInstance(String param1, String param2) {
-        homePage fragment = new homePage();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
+        this.context = context;
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
@@ -60,7 +61,27 @@ public class homePage extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
+        Post p = new Post("Test", "test", "test");
+        ArrayList<Post> pp = new ArrayList<>();
+
+        pp.add(p);
+        pp.add(p);
+        pp.add(p);
+        pp.add(p);
+        pp.add(p);
+        pp.add(p);
+
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_homepage, container, false);
+        view = inflater.inflate(R.layout.fragment_homepage, container, false);
+
+        homepagePostRcView = view.findViewById(R.id.recyclerView);
+        homepageLayoutManager = new LinearLayoutManager(context);
+        homepagePostRcView.setLayoutManager(homepageLayoutManager);
+
+        homepagePostAdapter = new BookmarkRCA(pp);
+        homepagePostRcView.setAdapter(homepagePostAdapter);
+
+        return view;
     }
 }
