@@ -18,11 +18,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.spaghetti.connect.R;
 import com.spaghetti.connect.data.Club;
 import com.spaghetti.connect.data.ObservableArrayList;
 import com.spaghetti.connect.data.Post;
+import com.spaghetti.connect.firebaseAuth.AuthHelper;
+import com.spaghetti.connect.firestoreAdapters.FirebaseBookmarkAdapter;
 import com.spaghetti.connect.firestoreAdapters.FirebaseProfileAdapter;
+import com.spaghetti.connect.firestoreAdapters.FirebaseUserProfileAdapter;
 import com.spaghetti.connect.ui.recyclerViewAdapter.BookmarkRvViewAdapter;
 import com.spaghetti.connect.ui.recyclerViewAdapter.HomePageViewAdapter;
 
@@ -65,29 +69,38 @@ public class homePage extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        FirebaseProfileAdapter firebaseProfileAdapter = new FirebaseProfileAdapter();
-        /*ObservableArrayList<String>  = new ObservableArrayList();
+        ArrayList<Post> homePosts = new ArrayList<>();
+        homepagePostAdapter = new HomePageViewAdapter(homePosts);
 
-        Observer onHomePageRetrieved = (o, arg) -> {
-            for (String in postId: )
-        }*/
+        FirebaseUserProfileAdapter FUA = new FirebaseUserProfileAdapter();
+        FirebaseBookmarkAdapter FBA = new FirebaseBookmarkAdapter();
 
-        ObservableArrayList<Post> observablePostList = new ObservableArrayList();
+        ObservableArrayList<String> subscriptions = new ObservableArrayList<>();
+        Observer onSubscriptionsRetrieved = (observable, o) -> {
+            for (String clubId : subscriptions.getList()) {
+                ObservableArrayList<String> postRefs = new ObservableArrayList<>();
 
-        Observer OnCompleteLister = new Observer() {
-            @Override
-            public void update(Observable observable, Object o) {
-                ArrayList<Post> homeList = observablePostList.getList();
-                homepagePostAdapter = new HomePageViewAdapter(homeList);
-                homepagePostRcView.setAdapter(homepagePostAdapter);
+                Observer onClubPostRefsRetrieved = (o1, arg) -> {
+                    for (String postRef : postRefs.getList()) {
+                        Post p = new Post();
+
+                        Observer onPostRetrieved = (o11, arg1) -> {
+                            homePosts.add(p);
+                            ((HomePageViewAdapter) homepagePostAdapter).update();
+                        };
+                        p.addObserver(onPostRetrieved);
+                        FBA.getPost(postRef, p);
+                    }
+                };
+                postRefs.addObserver(onClubPostRefsRetrieved);
+                FUA.getClubPostRefs(clubId, postRefs);
             }
         };
 
-        observablePostList.addObserver(OnCompleteLister);
-        firebaseProfileAdapter.RetrieveAllPosts(observablePostList);
+        subscriptions.addObserver(onSubscriptionsRetrieved);
+        FUA.getUserSubscriptions(AuthHelper.getUserEmail(FirebaseAuth.getInstance()), subscriptions);
 
         // Inflate the layout for this fragment
         view = inflater.inflate(R.layout.fragment_homepage, container, false);
@@ -95,6 +108,7 @@ public class homePage extends Fragment {
         homepagePostRcView = view.findViewById(R.id.recyclerView);
         homepageLayoutManager = new LinearLayoutManager(context);
         homepagePostRcView.setLayoutManager(homepageLayoutManager);
+        homepagePostRcView.setAdapter(homepagePostAdapter);
 
         return view;
     }

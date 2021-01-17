@@ -70,7 +70,7 @@ public class HomePageViewAdapter  extends RecyclerView.Adapter<HomePageViewAdapt
         holder.date.setText(p.getEventDate().toString());
 
         // check if it is an announcement or a post
-        if (p.isEvent() == true){
+        if (p.isEvent()){
             holder.attend.setVisibility(VISIBLE);
             holder.bookmark.setVisibility(VISIBLE);
         } else {
@@ -85,5 +85,12 @@ public class HomePageViewAdapter  extends RecyclerView.Adapter<HomePageViewAdapt
     @Override
     public int getItemCount() {
         return data.size();
+    }
+
+    public void update() {
+        if (getItemCount() > 1) {
+            data.sort((o1, o2) -> o2.getCreationTime().compareTo(o1.getCreationTime()));
+        }
+        notifyDataSetChanged();
     }
 }
