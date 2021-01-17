@@ -2,14 +2,25 @@ package com.spaghetti.connect.data;
 
 import android.graphics.Bitmap;
 
+import java.util.Date;
 import java.util.Observable;
 
 public class Post extends Observable {
+    boolean isEvent;
+
     String id;
     String title;
     String content;
     String club;
+
     Bitmap image;
+
+    Date creationTime;
+    Date eventDate;
+
+    public Post() {
+
+    }
 
     public Post(String id, String title, String club, String content, Bitmap image) {
         this.id = id;
@@ -27,9 +38,43 @@ public class Post extends Observable {
         this.content = content;
     }
 
+    public Post(String id, String title, String content, String club, Bitmap image, Date creationTime, Date eventDate) {
+        this.id = id;
+        this.title = title;
+        this.content = content;
+        this.club = club;
+        this.image = image;
+        this.creationTime = creationTime;
+        this.eventDate = eventDate;
+    }
+
     public void mark() {
         setChanged();
         notifyObservers();
+    }
+
+    public boolean isEvent() {
+        return isEvent;
+    }
+
+    public void setEvent(boolean event) {
+        isEvent = event;
+    }
+
+    public Date getCreationTime() {
+        return creationTime;
+    }
+
+    public void setCreationTime(Date creationTime) {
+        this.creationTime = creationTime;
+    }
+
+    public Date getEventDate() {
+        return eventDate;
+    }
+
+    public void setEventDate(Date eventDate) {
+        this.eventDate = eventDate;
     }
 
     public String getId() {
