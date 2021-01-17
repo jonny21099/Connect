@@ -19,7 +19,6 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.spaghetti.connect.R;
-import com.spaghetti.connect.RecyclerViewAdapter;
 import com.spaghetti.connect.data.Post;
 import com.spaghetti.connect.firestoreAdapters.FirebaseProfileAdapter;
 import com.spaghetti.connect.ui.recyclerViewAdapter.BookmarkRvViewAdapter;
