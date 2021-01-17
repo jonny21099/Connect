@@ -6,7 +6,7 @@
     android:id="@+id/register_login"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#007B28"
+    android:background="#FAFAFA"
     tools:context=".Register">
 
 
@@ -17,7 +17,7 @@
         android:fontFamily="@font/prisma"
         android:text="@string/register"
         android:textAlignment="center"
-        android:textColor="#FFFFFF"
+        android:textColor="#000000"
         android:textSize="50sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -32,8 +32,6 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:hint="Password"
-        android:textColorHint="#CCCCCC"
-        android:textColor="#FFFFFF"
         android:ems="10"
         android:inputType="textPassword"
         app:layout_constraintStart_toStartOf="@+id/register_email"
@@ -47,8 +45,7 @@
         android:ems="10"
         android:hint="@string/confirm_password"
         android:inputType="textPassword"
-        android:textColorHint="#CCCCCC"
-        android:textColor="#FFFFFF"
+
         app:layout_constraintStart_toStartOf="@+id/register_password"
         app:layout_constraintTop_toBottomOf="@+id/register_password" />
 
@@ -60,8 +57,6 @@
         android:ems="10"
         android:hint="@string/university_email"
         android:inputType="textEmailAddress"
-        android:textColorHint="#CCCCCC"
-        android:textColor="#FFFFFF"
         app:layout_constraintStart_toStartOf="@+id/loginFont"
         app:layout_constraintTop_toBottomOf="@+id/loginFont" />
 
@@ -71,7 +66,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/begin_clubbing"
-        android:textColor="#007B28"
+        android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
@@ -85,7 +80,6 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:text="@string/already_have_an_account_back_to_login"
-        android:textColor="#CCCCCC"
         app:layout_constraintEnd_toEndOf="@+id/register_sign_up_btn"
         app:layout_constraintStart_toStartOf="@+id/register_sign_up_btn"
         app:layout_constraintTop_toBottomOf="@+id/register_sign_up_btn" />

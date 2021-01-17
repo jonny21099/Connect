@@ -5,7 +5,7 @@
     android:id="@+id/Name"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#007B28"
+    android:background="#FAFAFA"
     tools:context=".LogIn">
 
 
@@ -17,8 +17,6 @@
         android:ems="10"
         android:hint="@string/email"
         android:inputType="textEmailAddress"
-        android:textColor="#CCCCCC"
-        android:textColorHint="#CCCCCC"
         app:layout_constraintEnd_toEndOf="@+id/loginFont"
         app:layout_constraintHorizontal_bias="0.447"
         app:layout_constraintStart_toStartOf="@+id/loginFont"
@@ -32,8 +30,6 @@
         android:fontFamily="@font/prisma"
         android:text="@string/login"
         android:textAlignment="center"
-        android:textColor="#CCCCCC"
-        android:textColorHint="#CCCCCC"
         android:textSize="50sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -49,8 +45,6 @@
         android:ems="10"
         android:hint="@string/password"
         android:inputType="textPassword"
-        android:textColor="#CCCCCC"
-        android:textColorHint="#CCCCCC"
         app:layout_constraintStart_toStartOf="@+id/editTextTextEmailAddress"
         app:layout_constraintTop_toBottomOf="@+id/editTextTextEmailAddress"
         android:autofillHints="" />
@@ -61,7 +55,6 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
         android:text="@string/forgot_your_password"
-        android:textColor="#CCCCCC"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/loginPassword"
         app:layout_constraintStart_toStartOf="@+id/loginPassword"
@@ -74,7 +67,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
         android:text="@string/login"
-        android:textColor="#007B28"
+        android:textColor="#FAFAFA"
         app:layout_constraintEnd_toEndOf="@+id/loginPassword"
         app:layout_constraintStart_toStartOf="@+id/loginPassword"
         app:layout_constraintTop_toBottomOf="@+id/login_reset_password" />
@@ -84,7 +77,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/don_t_have_an_account"
-        android:textColor="#CCCCCC"
         app:layout_constraintEnd_toEndOf="@+id/login_button"
         app:layout_constraintStart_toStartOf="@+id/login_button"
         app:layout_constraintTop_toBottomOf="@+id/login_button" />
