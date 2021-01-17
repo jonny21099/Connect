@@ -29,8 +29,11 @@ import com.spaghetti.connect.firebaseAuth.AuthHelper;
 import java.util.ArrayList;
 import java.util.Map;
 import java.util.Observable;
+import java.util.concurrent.TimeUnit;
 import static androidx.constraintlayout.motion.utils.Oscillator.TAG;
 import androidx.annotation.NonNull;
+
+import static java.lang.Thread.sleep;
 
 /** example
  *
@@ -40,23 +43,39 @@ public class FirebaseProfileAdapter {
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
 
     Post currentPost; // needs to be here or it causes errors
+    Boolean isFinished = false;
 
     public FirebaseProfileAdapter() {
 
     }
 
-    public void RetrieveAllPosts(){
-        DocumentReference userRef = db.collection("Posts").document();
-        userRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-            @Override
-            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                if(task.isSuccessful()) {
-                    DocumentSnapshot doc = task.getResult();
-                    String title = doc.getString("title");
-                    String content = doc.getString("content");
-                }
-            }
-        });
+    public void RetrieveAllPosts(ObservableArrayList<Post> postList){
+        db.collection("Posts")
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if(task.isSuccessful()){
+                            for (QueryDocumentSnapshot documentSnapshot : task.getResult()){
+
+                                // get all the attributes for Post class from the database
+                                String id = documentSnapshot.getId();
+                                String title = documentSnapshot.get("Title").toString();
+                                String club = documentSnapshot.get("Club").toString();
+                                String content = documentSnapshot.get("Content").toString();
+                                //Bitmap image = (Bitmap) documentSnapshot.get("Image");
+
+                                // create a new Post object of the Post in the database
+                                Post post = new Post(id, title, club, content);
+                                postList.add(post);
+                            }
+                            postList.notifyChange();
+                        } else {
+                            Log.d(TAG, "Error getting documents: ",task.getException());
+                        }
+
+                    }
+                });
     }
 
     public void RetrieveAllClubs(ObservableArrayList<Club> clubList){
@@ -90,7 +109,6 @@ public class FirebaseProfileAdapter {
         // returns all the posts in the database
 
         ArrayList<Post> allPosts = new ArrayList();
-
         //query the database for all the events
         db.collection("Posts")
                 .get()
@@ -110,13 +128,25 @@ public class FirebaseProfileAdapter {
                                 // create a new Post object of the Post in the database
                                 Post post = new Post(id, title, club, content);
                                 allPosts.add(post);
+                                Log.d("ADDED TO ALL POST: ", String.valueOf(allPosts.size()));
 
 
                             }
+                            isFinished = true;
                         }
+
                     }
                 });
 
+        Log.d("RETURNED POSTS", String.valueOf(allPosts.size()));
+
+        // wait to retrieve the data from firebase
+        try {
+            // THIS ISNT WORKING!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+            TimeUnit.SECONDS.sleep(5);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         return allPosts;
     }
 
@@ -158,6 +188,7 @@ public class FirebaseProfileAdapter {
 
             }
         }
+
 
         return approvedPosts;
 
