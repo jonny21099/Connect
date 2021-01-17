@@ -7,7 +7,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.card.MaterialCardView;
@@ -30,8 +29,8 @@ public class BookmarkRCA extends RecyclerView.Adapter<BookmarkRCA.PostViewHolder
             super(requestView);
             image = requestView.findViewById(R.id.postViewHolderImage);
             layout = requestView.findViewById(R.id.postViewHolderLayout);
-            title = requestView.findViewById(R.id.postViewHolderTitle);
-            content = requestView.findViewById(R.id.postViewHolderContent);
+            title = requestView.findViewById(R.id.postTitle);
+            content = requestView.findViewById(R.id.clubName);
         }
     }
 
