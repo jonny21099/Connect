@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.google.android.material.card.MaterialCardView xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/postViewHolderLayout"
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/postViewHolderLayout"
     android:layout_width="match_parent"
     android:layout_height="400dp"
     android:layout_margin="10dp"
@@ -11,9 +11,9 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_margin="10dp"
         android:orientation="vertical"
-        android:weightSum="1"
-        android:layout_margin="10dp">
+        android:weightSum="1">
 
         <ImageView
             android:id="@+id/postViewHolderImage"
@@ -21,35 +21,44 @@
             android:layout_height="0dp"
             android:layout_weight="0.4"
             android:background="@drawable/ic_launcher_background"
-            android:contentDescription="@string/post_media">
-        </ImageView>
+            android:contentDescription="@string/post_media"></ImageView>
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="0.6">
 
-            <TextView
-                android:id="@+id/postTitle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+            <Button
+                android:id="@+id/attendButton"
+                android:layout_width="175dp"
+                android:layout_height="47dp"
+                android:layout_marginBottom="16dp"
                 android:layout_marginStart="8dp"
-                android:layout_marginTop="10dp"
-                android:text="@string/placeholder"
-                android:textSize="20sp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                android:backgroundTint="@color/purple_500"
+                android:text="Attend"
+                android:textAlignment="inherit"
+                android:textColor="#FFFFFF"
+                android:visibility="invisible"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
 
-            <TextView
-                android:id="@+id/clubName"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="10dp"
-                android:text="@string/placeholder"
-                android:textSize="15sp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/postTitle" />
+            <Button
+                android:id="@+id/bookmarkButton"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:layout_width="174dp"
+                android:layout_height="47dp"
+                android:layout_marginEnd="9dp"
+                android:layout_marginTop="165dp"
+                android:backgroundTint="#FFFFFF"
+                android:drawableTint="#FFFFFF"
+                android:foregroundTint="#FFFFFF"
+                android:shadowColor="#FFFFFF"
+                android:text="BOOKMARK"
+                android:textColor="@color/purple_500"
+                android:visibility="invisible"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:strokeColor="#FFFFFF" />
 
             <TextView
                 android:id="@+id/postDesc"
@@ -75,35 +84,27 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/clubName" />
 
-            <Button
-                android:id="@+id/attendButton"
-                android:layout_width="175dp"
-                android:layout_height="47dp"
-                android:layout_marginBottom="16dp"
+            <TextView
+                android:id="@+id/postTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
-                android:text="Attend"
-                android:textAlignment="inherit"
-                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_marginTop="10dp"
+                android:text="@string/placeholder"
+                android:textSize="20sp"
                 app:layout_constraintStart_toStartOf="parent"
-                android:visibility="invisible"/>
+                app:layout_constraintTop_toTopOf="parent" />
 
-            <Button
-                android:id="@+id/bookmarkButton"
-                style="@style/Widget.AppCompat.Button.Borderless"
-                android:layout_width="174dp"
-                android:layout_height="47dp"
-                android:layout_marginEnd="9dp"
-                android:layout_marginTop="165dp"
-                android:backgroundTint="#FFFFFF"
-                android:drawableTint="#FFFFFF"
-                android:foregroundTint="#FFFFFF"
-                android:shadowColor="#FFFFFF"
-                android:text="BOOKMARK"
-                android:textColor="@color/purple_500"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:strokeColor="#FFFFFF"
-                android:visibility="invisible"/>
+            <TextView
+                android:id="@+id/clubName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="10dp"
+                android:text="@string/placeholder"
+                android:textSize="15sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/postTitle" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

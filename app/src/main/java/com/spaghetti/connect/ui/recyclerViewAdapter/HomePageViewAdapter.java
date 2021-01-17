@@ -3,6 +3,7 @@ package com.spaghetti.connect.ui.recyclerViewAdapter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -11,9 +12,12 @@ import com.spaghetti.connect.R;
 import com.spaghetti.connect.data.Post;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import static android.view.View.VISIBLE;
 
 public class HomePageViewAdapter  extends RecyclerView.Adapter<HomePageViewAdapter.PostViewHolder> {
 
@@ -27,6 +31,9 @@ public class HomePageViewAdapter  extends RecyclerView.Adapter<HomePageViewAdapt
         TextView club;
         TextView date;
 
+        Button attend;
+        Button bookmark;
+
         //TODO: I DONT KNOW IF I SHOUDL CHANGE THIS?? WILL THIS CAUSE PROBLEMS???
         PostViewHolder(View requestView) {
             super(requestView);
@@ -36,6 +43,8 @@ public class HomePageViewAdapter  extends RecyclerView.Adapter<HomePageViewAdapt
             club = requestView.findViewById(R.id.clubName);
             date = requestView.findViewById(R.id.postDate);
             content = requestView.findViewById(R.id.postDesc);
+            bookmark = requestView.findViewById(R.id.bookmarkButton);
+            attend = requestView.findViewById(R.id.attendButton);
         }
     }
 
@@ -58,8 +67,16 @@ public class HomePageViewAdapter  extends RecyclerView.Adapter<HomePageViewAdapt
         holder.title.setText(p.getTitle());
         holder.image.setImageBitmap(p.getImage());
         holder.club.setText(p.getClub());
-        holder.date.setText(p.getDate());
+        holder.date.setText(p.getEventDate().toString());
 
+        // check if it is an announcement or a post
+        if (p.isEvent() == true){
+            holder.attend.setVisibility(VISIBLE);
+            holder.bookmark.setVisibility(VISIBLE);
+        } else {
+            holder.attend.setVisibility(View.INVISIBLE);
+            holder.bookmark.setVisibility(View.INVISIBLE);
+        }
         holder.layout.setOnClickListener(v -> {
             // TODO
         });

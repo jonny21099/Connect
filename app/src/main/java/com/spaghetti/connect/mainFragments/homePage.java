@@ -69,6 +69,12 @@ public class homePage extends Fragment {
                              Bundle savedInstanceState) {
 
         FirebaseProfileAdapter firebaseProfileAdapter = new FirebaseProfileAdapter();
+        /*ObservableArrayList<String>  = new ObservableArrayList();
+
+        Observer onHomePageRetrieved = (o, arg) -> {
+            for (String in postId: )
+        }*/
+
         ObservableArrayList<Post> observablePostList = new ObservableArrayList();
 
         Observer OnCompleteLister = new Observer() {

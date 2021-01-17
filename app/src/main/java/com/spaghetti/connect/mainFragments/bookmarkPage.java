@@ -11,11 +11,18 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.spaghetti.connect.R;
+import com.spaghetti.connect.data.ObservableArrayList;
 import com.spaghetti.connect.data.Post;
+import com.spaghetti.connect.firebaseAuth.AuthHelper;
+import com.spaghetti.connect.firestoreAdapters.FirebaseBookmarkAdapter;
+import com.spaghetti.connect.firestoreAdapters.FirebaseUserProfileAdapter;
 import com.spaghetti.connect.ui.recyclerViewAdapter.BookmarkRvViewAdapter;
 
 import java.util.ArrayList;
+import java.util.Observable;
+import java.util.Observer;
 
 public class bookmarkPage extends Fragment {
 
@@ -51,15 +58,32 @@ public class bookmarkPage extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        Post p = new Post("Test", "test", "test", "test");
-        ArrayList<Post> pp = new ArrayList<>();
+        ArrayList<Post> bookmarks = new ArrayList<>();
+        bookmarkedPostAdapter = new BookmarkRvViewAdapter(bookmarks);
 
-        pp.add(p);
-        pp.add(p);
-        pp.add(p);
-        pp.add(p);
-        pp.add(p);
-        pp.add(p);
+        // get all user's bookmark
+
+        FirebaseUserProfileAdapter FUA = new FirebaseUserProfileAdapter();
+        FirebaseBookmarkAdapter FBA = new FirebaseBookmarkAdapter();
+
+        ObservableArrayList<String> bookmarkRefs = new ObservableArrayList<>();
+        Observer onBookmarkRetrieved = (o, arg) -> {
+            for (String postId : bookmarkRefs.getList()) {
+                Post p = new Post();
+                Observer onPostRetrieved = new Observer() {
+                    @Override
+                    public void update(Observable o, Object arg) {
+                        bookmarks.add(p);
+                        ((BookmarkRvViewAdapter) bookmarkedPostAdapter).update();
+                    }
+                };
+                p.addObserver(onPostRetrieved);
+
+                FBA.getPost(postId, p);
+            }
+        };
+        bookmarkRefs.addObserver(onBookmarkRetrieved);
+        FUA.getUserBookmarks(AuthHelper.getUserEmail(FirebaseAuth.getInstance()), bookmarkRefs);
 
 
         // Inflate the layout for this fragment
@@ -68,11 +92,9 @@ public class bookmarkPage extends Fragment {
         bookmarkedPostRcView = view.findViewById(R.id.bookmarkMainRcView);
         bookmarkedPostLayoutManager = new LinearLayoutManager(c);
         bookmarkedPostRcView.setLayoutManager(bookmarkedPostLayoutManager);
-
-        bookmarkedPostAdapter = new BookmarkRvViewAdapter(pp);
         bookmarkedPostRcView.setAdapter(bookmarkedPostAdapter);
-
 
         return view;
     }
+
 }
