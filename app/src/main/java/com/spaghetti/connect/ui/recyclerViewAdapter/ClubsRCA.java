@@ -16,22 +16,22 @@ import com.spaghetti.connect.data.Club;
 
 import java.util.ArrayList;
 
-public class ClubsRCA extends RecyclerView.Adapter<ClubsRCA.PostViewHolder> {
+public class ClubsRCA extends RecyclerView.Adapter<ClubsRCA.ClubViewHolder> {
 
     ArrayList<Club> data;
 
-    public static class PostViewHolder extends RecyclerView.ViewHolder {
+    public static class ClubViewHolder extends RecyclerView.ViewHolder {
         MaterialCardView layout;
         ImageView image;
         TextView description;
         TextView name;
 
-        PostViewHolder(View requestView) {
+        ClubViewHolder(View requestView) {
             super(requestView);
-            layout = requestView.findViewById(R.id.postViewHolderLayout);
-            image = requestView.findViewById(R.id.postViewHolderImage);
-            name = requestView.findViewById(R.id.postTitle);
-            description = requestView.findViewById(R.id.postDesc);
+            layout = requestView.findViewById(R.id.clubViewHolderLayout);
+            image = requestView.findViewById(R.id.clubViewHolderImage);
+            name = requestView.findViewById(R.id.clubName);
+            description = requestView.findViewById(R.id.clubDesc);
         }
     }
 
@@ -40,14 +40,14 @@ public class ClubsRCA extends RecyclerView.Adapter<ClubsRCA.PostViewHolder> {
     }
 
     @Override
-    public ClubsRCA.PostViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public ClubsRCA.ClubViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         // create a new view
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.postviewholder, parent, false);
-        return new ClubsRCA.PostViewHolder(v);
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.clubviewholder, parent, false);
+        return new ClubsRCA.ClubViewHolder(v);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ClubsRCA.PostViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ClubsRCA.ClubViewHolder holder, int position) {
         Club c = data.get(position);
 
         holder.name.setText(c.getName());
