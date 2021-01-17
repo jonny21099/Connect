@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment;
 
 public class ClubEventsFragment extends Fragment {
 
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.club_eventsview, container, false);

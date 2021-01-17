@@ -35,7 +35,7 @@ class ScreenSlidePagerAdapter extends FragmentStateAdapter {
             case 2:
                 return new clubsPage();
             case 3:
-                return new clubProfilePage();
+                return new clubProfilePage(c);
         }
         throw new RuntimeException("Catastrophic error");
     }
