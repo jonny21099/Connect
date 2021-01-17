@@ -26,6 +26,11 @@ public class Post extends Observable {
         this.content = content;
     }
 
+    public void mark() {
+        setChanged();
+        notifyObservers();
+    }
+
     public String getId() {
         return id;
     }
