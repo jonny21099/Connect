@@ -1,92 +1,80 @@
 package com.spaghetti.connect;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.google.firebase.auth.FirebaseAuth;
+import com.spaghetti.connect.data.BinarySignal;
+import com.spaghetti.connect.firebaseAuth.AuthHelper;
+import com.spaghetti.connect.utility.InputValidator;
+
+import org.w3c.dom.Text;
+
+import java.util.Observable;
+import java.util.Observer;
 
 public class Register extends AppCompatActivity {
     private static final String TAG = "SignupActivity";
 
-    EditText nameInput;
     EditText emailInput;
     EditText passwordInput;
-    EditText registerButton;
-    EditText goBacktoLogin;
+    EditText passwordConfirmInput;
+    TextView goBacktoLogin;
+    Button registerButton;
+
+    Context c;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
+        c = this;
+
         // map view elements
-        nameInput = findViewById(R.id.register_name);
-        emailInput = findViewById(R.id.register_name);
-        passwordInput = findViewById(R.id.register_name);
-        registerButton = findViewById(R.id.register_name);
-        goBacktoLogin = findViewById(R.id.register_name);
+        emailInput = findViewById(R.id.register_email);
+        passwordInput = findViewById(R.id.register_password);
+        passwordConfirmInput = findViewById(R.id.register_confirm_password);
+        registerButton = findViewById(R.id.register_sign_up_btn);
+        goBacktoLogin = findViewById(R.id.register_go_back);
 
-
-        registerButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-            }
-        });
-
-        goBacktoLogin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                //
-            }
-        });
-
-
-
-
-
+        registerButton.setOnClickListener(view -> attemptRegister());
+        goBacktoLogin.setOnClickListener(view -> finish());
     }
 
-    public void signup() {
-        Log.d(TAG, "Signup");
-
-
-    }
-
-    public boolean validate() {
-        boolean valid = true;
-
-        String name = nameInput.getText().toString();
-        String email = emailInput.getText().toString();
+    void attemptRegister() {
+        String email = emailInput.getText().toString().trim();
         String password = passwordInput.getText().toString();
-        String button = registerButton.getText().toString();
+        String passwordConfirm = passwordConfirmInput.getText().toString();
 
+        BinarySignal signal = new BinarySignal();
+        Observer onCompleteListen = (o, arg) -> {
+            if (signal.getState()) {
+                Toast.makeText(c, "Success", Toast.LENGTH_LONG).show();
+                Intent i = new Intent(Register.this, MainActivity.class);
+                i.putExtra("Initalize User", true);
+                startActivity(i);
+                finishAffinity();
+            } else {
+                Toast.makeText(c, "Email Address Already In Use", Toast.LENGTH_LONG).show();
+            }
+        };
+        signal.addObserver(onCompleteListen);
 
-
-        if (name.isEmpty() || name.length() < 3) {
-            nameInput.setError("at least 3 characters");
-            valid = false;
-        } else {
-            nameInput.setError(null);
+        if (password.equals(passwordConfirm)
+                && InputValidator.Companion.validEmail(email)
+                && InputValidator.Companion.validPassword(password)) {
+            AuthHelper.register(email, password, FirebaseAuth.getInstance(), signal);
         }
-
-        if (email.isEmpty() || !Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-            emailInput.setError("enter a valid email address");
-            valid = false;
-        } else {
-            emailInput.setError(null);
-        }
-
-        if (password.isEmpty() || password.length() < 4 || password.length() > 10) {
-            passwordInput.setError("between 4 and 10 alphanumeric characters");
-            valid = false;
-        } else {
-            passwordInput.setError(null);
-        }
-
-        return valid;
     }
 }

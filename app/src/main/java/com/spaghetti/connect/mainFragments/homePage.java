@@ -21,7 +21,7 @@ import android.widget.Toast;
 import com.spaghetti.connect.R;
 import com.spaghetti.connect.RecyclerViewAdapter;
 import com.spaghetti.connect.data.Post;
-import com.spaghetti.connect.ui.recyclerViewAdapter.BookmarkRCA;
+import com.spaghetti.connect.ui.recyclerViewAdapter.BookmarkRvViewAdapter;
 
 import java.util.ArrayList;
 
@@ -79,7 +79,7 @@ public class homePage extends Fragment {
         homepageLayoutManager = new LinearLayoutManager(context);
         homepagePostRcView.setLayoutManager(homepageLayoutManager);
 
-        homepagePostAdapter = new BookmarkRCA(pp);
+        homepagePostAdapter = new BookmarkRvViewAdapter(pp);
         homepagePostRcView.setAdapter(homepagePostAdapter);
 
         return view;
