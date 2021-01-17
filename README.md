@@ -19,6 +19,6 @@ $ git clone https://github.com/yuqian5/Connect.git
 
 ### Demonstration
 
-Link to video: 
+Link to video: https://youtu.be/4hN2F91aZGk
 
 
