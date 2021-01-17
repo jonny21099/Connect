@@ -41,48 +41,39 @@ public class LogIn extends AppCompatActivity {
         recoveryButton = findViewById(R.id.login_reset_password);
         registerButton = findViewById(R.id.login_signup);
 
-        loginButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String email = logInEmailInput.getText().toString();
-                String password = logInPasswordInput.getText().toString();
-                BinarySignal signal = new BinarySignal();
-                Observer onCompleteListener = new Observer() {
-                    @Override
-                    public void update(Observable o, Object arg) {
-                        if (signal.getState()) {
-                            Log.e(TAG,"it worked");
-                            Intent i = new Intent(LogIn.this, MainActivity.class);
-                            startActivity(i);
-                            finishAffinity();
-                        } else {
-                            Toast.makeText(LogIn.this, "Invalid Username or Password", Toast.LENGTH_LONG).show();
-                        }
-                    }
-                };
-                signal.addObserver(onCompleteListener);
+        loginButton.setOnClickListener(v -> {
+            String email = logInEmailInput.getText().toString();
+            String password = logInPasswordInput.getText().toString();
 
-                if (InputValidator.Companion.validEmail(email) && InputValidator.Companion.validPassword(password)) {
-                    AuthHelper.signIn(email, password, FirebaseAuth.getInstance(), signal);
+            BinarySignal signal = new BinarySignal();
+            Observer onCompleteListener = (o, arg) -> {
+                if (signal.getState()) {
+                    Intent i = new Intent(LogIn.this, MainActivity.class);
+                    startActivity(i);
+                    finishAffinity();
+                } else {
+                    Toast.makeText(LogIn.this, "Invalid Username or Password", Toast.LENGTH_LONG).show();
+
                 }
+            };
+            signal.addObserver(onCompleteListener);
+
+            if (InputValidator.Companion.validEmail(email)) {
+                AuthHelper.signIn(email, password, FirebaseAuth.getInstance(), signal);
+            } else {
+                Toast.makeText(this, "Please Enter a Valid Email", Toast.LENGTH_LONG).show();
             }
         });
 
         //TODO change to open password reset class
-        recoveryButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(LogIn.this, ForgotPassword.class);
-                startActivity(i);
-            }
+        recoveryButton.setOnClickListener(v -> {
+            Intent i = new Intent(LogIn.this, ForgotPassword.class);
+            startActivity(i);
         });
 
-        registerButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(LogIn.this, Register.class);
-                startActivity(i);
-            }
+        registerButton.setOnClickListener(v -> {
+            Intent i = new Intent(LogIn.this, Register.class);
+            startActivity(i);
         });
     }
 
