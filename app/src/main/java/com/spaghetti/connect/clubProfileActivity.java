@@ -22,20 +22,11 @@ public class clubProfileActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragement_clubprofilepage);
 
-
+        String[] titles = new String[]{"Details", "Events"};
         tabLayout = findViewById(R.id.tabMode);
         vp = findViewById(R.id.profile_club_pager);
-        tabSwitchAdapter = new TabSwitchAdapter(this, clubProfileActivity.this);
+        tabSwitchAdapter = new TabSwitchAdapter(this);
         vp.setAdapter(tabSwitchAdapter);
-
-        new TabLayoutMediator(tabLayout, vp,(tab, position) -> {
-            switch (position){
-                case 0:
-                    tab.setCustomView(R.layout.club_cardview);
-                    break;
-                case 1:
-                    tab.setCustomView(R.layout.club_eventsview);
-            }
-        }).attach();
+        new TabLayoutMediator(tabLayout, vp,(tab, position) -> tab.setText(titles[position])).attach();
     }
 }

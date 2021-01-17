@@ -9,15 +9,12 @@ import androidx.viewpager2.adapter.FragmentStateAdapter;
 
 import com.spaghetti.connect.ClubDetailsFragment;
 import com.spaghetti.connect.ClubEventsFragment;
+import com.spaghetti.connect.mainFragments.userprofilePage;
 
 public class TabSwitchAdapter extends FragmentStateAdapter {
 
-    Context c;
-
-    public TabSwitchAdapter(FragmentActivity fa, Context c) {
+    public TabSwitchAdapter(FragmentActivity fa) {
         super(fa);
-
-        this.c = c;
     }
 
     @NonNull
@@ -25,11 +22,13 @@ public class TabSwitchAdapter extends FragmentStateAdapter {
     public Fragment createFragment(int position) {
         switch (position){
             case 0:
-                return new ClubDetailsFragment();
+                return new userprofilePage();
             case 1:
-                return new ClubEventsFragment();
+                return ClubEventsFragment.newInstance("123.email.com", "123456");
+            default:
+                return ClubEventsFragment.newInstance("123.email.com a", "123456");
         }
-        throw new RuntimeException("Catastrophic error");
+//        throw new RuntimeException("Catastrophic error");
     }
 
 
