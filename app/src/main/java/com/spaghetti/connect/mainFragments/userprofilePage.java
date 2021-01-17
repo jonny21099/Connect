@@ -57,8 +57,8 @@ public class userprofilePage extends Fragment {
          * @return A new instance of fragment page4.
          */
     // TODO: Rename and change types and number of parameters
-    public static bookmarkPage newInstance(String param1, String param2) {
-        bookmarkPage fragment = new bookmarkPage();
+    public static userprofilePage newInstance(String param1, String param2) {
+        userprofilePage fragment = new userprofilePage();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
