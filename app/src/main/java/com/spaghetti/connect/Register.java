@@ -71,10 +71,16 @@ public class Register extends AppCompatActivity {
         };
         signal.addObserver(onCompleteListen);
 
-        if (password.equals(passwordConfirm)
-                && InputValidator.Companion.validEmail(email)
-                && InputValidator.Companion.validPassword(password)) {
-            AuthHelper.register(email, password, FirebaseAuth.getInstance(), signal);
+        if (password.equals(passwordConfirm)) {
+            if (InputValidator.Companion.validEmail(email)) {
+                if (InputValidator.Companion.validPassword(password)) {
+                    AuthHelper.register(email, password, FirebaseAuth.getInstance(), signal);
+                } else {
+                    Toast.makeText(c, "Password must be at least 8 digits long, contain at least 1 number, 1 uppercase letter, 1 lowercase letter and a special character.", Toast.LENGTH_LONG).show();
+                }
+            } else {
+                Toast.makeText(c, "Please Enter a Valid Email", Toast.LENGTH_LONG).show();
+            }
         }
     }
 }
