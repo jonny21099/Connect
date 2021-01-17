@@ -7,7 +7,7 @@
         android:id="@+id/profile_club_image"
         android:layout_width="match_parent"
         android:layout_height="175dp"
-        android:background="?attr/colorPrimary"
+        android:background="#0698bc"
         android:scaleType="centerCrop" />
 
     <RelativeLayout
@@ -19,7 +19,8 @@
             android:layout_width="168dp"
             android:layout_height="168dp"
             android:layout_centerHorizontal="true"
-            android:gravity="center_horizontal" />
+            android:gravity="center_horizontal"
+            android:background="#067d9b"/>
         <TextView
             android:id="@+id/profile_club_name"
             android:layout_width="wrap_content"
@@ -30,35 +31,62 @@
             android:textSize="32sp"
             android:layout_centerHorizontal="true"
             android:gravity="center_horizontal" />
-        <com.google.android.material.tabs.TabLayout
-            android:id="@+id/tabMode"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/profile_club_name"
-            android:layout_marginTop="15dp">
-            <com.google.android.material.tabs.TabItem
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Details"
-                />
 
-            <com.google.android.material.tabs.TabItem
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Events"
-                />
-
-        </com.google.android.material.tabs.TabLayout>
-        <androidx.viewpager2.widget.ViewPager2
-            android:id="@+id/profile_club_pager"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_below="@+id/tabMode"
-            android:layout_gravity="bottom"
-            android:background="#FAFAFA"/>
+            android:layout_marginTop="15dp"
+            android:layout_below="@+id/profile_club_name"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:text="Club Email:"
+                android:textSize="32sp" />
+            <TextView
+                android:id="@+id/club_email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:hint="Club Email"
+                android:textSize="32sp"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:text="Club Description:"
+                android:textSize="32sp"/>
+            <TextView
+                android:id="@+id/club_des"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:hint="Club Description"
+                android:textSize="32sp"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="60dp"
+                    android:backgroundTint="#FFFFFF"
+                    android:text="Create Post" />
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:backgroundTint="#FFFFFF"
+                    android:text="View Events" />
+            </LinearLayout>
+
+        </LinearLayout>
 
     </RelativeLayout>
-
 
 
 
