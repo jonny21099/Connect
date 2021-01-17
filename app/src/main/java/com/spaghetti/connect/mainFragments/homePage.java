@@ -18,11 +18,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.spaghetti.connect.R;
 import com.spaghetti.connect.data.Club;
 import com.spaghetti.connect.data.ObservableArrayList;
 import com.spaghetti.connect.data.Post;
+import com.spaghetti.connect.firebaseAuth.AuthHelper;
+import com.spaghetti.connect.firestoreAdapters.FirebaseBookmarkAdapter;
 import com.spaghetti.connect.firestoreAdapters.FirebaseProfileAdapter;
+import com.spaghetti.connect.firestoreAdapters.FirebaseUserProfileAdapter;
 import com.spaghetti.connect.ui.recyclerViewAdapter.BookmarkRvViewAdapter;
 import com.spaghetti.connect.ui.recyclerViewAdapter.HomePageViewAdapter;
 
@@ -68,13 +72,35 @@ public class homePage extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        FirebaseProfileAdapter firebaseProfileAdapter = new FirebaseProfileAdapter();
-        /*ObservableArrayList<String>  = new ObservableArrayList();
+        ArrayList<Post> homePosts = new ArrayList<>();
+        homepagePostAdapter = new HomePageViewAdapter(homePosts);
 
-        Observer onHomePageRetrieved = (o, arg) -> {
-            for (String in postId: )
-        }*/
+        FirebaseUserProfileAdapter FUA = new FirebaseUserProfileAdapter();
+        FirebaseBookmarkAdapter FBA = new FirebaseBookmarkAdapter();
 
+        ObservableArrayList<String> homepageRefs = new ObservableArrayList<>();
+        Observer onHomepageRetrieved = new Observer() {
+            @Override
+            public void update(Observable observable, Object o) {
+                homepageRefs.addObserver();
+            }
+        }
+
+        homepageRefs.addObserver(onPostRetrieved);
+        FUA.getUserBookmarks(AuthHelper.getUserEmail(FirebaseAuth.getInstance()), homepageRefs);
+
+        // Inflate the layout for this fragment
+        view = inflater.inflate(R.layout.fragment_homepage, container, false);
+
+        homepagePostRcView = view.findViewById(R.id.recyclerView);
+        homepageLayoutManager = new LinearLayoutManager(context);
+        homepagePostRcView.setLayoutManager(homepageLayoutManager);
+
+        return view;
+
+
+        ////***********************************////
+       /* FirebaseProfileAdapter firebaseProfileAdapter = new FirebaseProfileAdapter();
         ObservableArrayList<Post> observablePostList = new ObservableArrayList();
 
         Observer OnCompleteLister = new Observer() {
@@ -96,6 +122,6 @@ public class homePage extends Fragment {
         homepageLayoutManager = new LinearLayoutManager(context);
         homepagePostRcView.setLayoutManager(homepageLayoutManager);
 
-        return view;
+        return view;*/
     }
 }

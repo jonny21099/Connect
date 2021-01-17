@@ -149,15 +149,6 @@ public class FirebaseProfileAdapter {
                     }
                 });
 
-        Log.d("RETURNED POSTS", String.valueOf(allPosts.size()));
-
-        // wait to retrieve the data from firebase
-        try {
-            // THIS ISNT WORKING!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-            TimeUnit.SECONDS.sleep(5);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
         return allPosts;
     }
 

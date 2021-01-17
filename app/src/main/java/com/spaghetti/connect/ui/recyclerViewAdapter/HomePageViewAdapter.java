@@ -86,4 +86,11 @@ public class HomePageViewAdapter  extends RecyclerView.Adapter<HomePageViewAdapt
     public int getItemCount() {
         return data.size();
     }
+
+    public void update() {
+        if (getItemCount() > 1) {
+            data.sort((o1, o2) -> o2.getCreationTime().compareTo(o1.getCreationTime()));
+        }
+        notifyDataSetChanged();
+    }
 }
