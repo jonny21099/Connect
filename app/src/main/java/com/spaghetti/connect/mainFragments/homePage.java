@@ -65,24 +65,31 @@ public class homePage extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        Post p = new Post("Test", "test", "test", "test");
-        ArrayList<Post> pp = new ArrayList<>();
-
-        pp.add(p);
-        pp.add(p);
-        pp.add(p);
-        pp.add(p);
-        pp.add(p);
-        pp.add(p);
-
         // Inflate the layout for this fragment
         view = inflater.inflate(R.layout.fragment_homepage, container, false);
 
         FirebaseProfileAdapter firebaseProfileAdapter = new FirebaseProfileAdapter();
         ArrayList<Post> allPosts = firebaseProfileAdapter.getPosts();
+
+        //TODO: once sign in user is approved check if this works:
         //ArrayList<Post> approvedPosts = firebaseProfileAdapter.checkPost(null, false, allPosts);
 
         /*TODO: display the approved posts*/
+
+        //Post p = new Post("Test", "test", "test", "test");
+        ArrayList<Post> pp = new ArrayList<>();
+
+        Log.d("POST SIZE:", String.valueOf(allPosts.size()));
+        for (int i = 0 ; i < allPosts.size(); i++) {
+            pp.add(allPosts.get(i));
+        }
+
+        /*pp.add(p);
+        pp.add(p);
+        pp.add(p);
+        pp.add(p);
+        pp.add(p);
+        pp.add(p);*/
 
         homepagePostRcView = view.findViewById(R.id.recyclerView);
         homepageLayoutManager = new LinearLayoutManager(context);

@@ -16,8 +16,11 @@ import com.spaghetti.connect.firebaseAuth.AuthHelper;
 import java.util.ArrayList;
 import java.util.Map;
 import java.util.Observable;
+import java.util.concurrent.TimeUnit;
 
 import androidx.annotation.NonNull;
+
+import static java.lang.Thread.sleep;
 
 /** example
  *
@@ -26,6 +29,7 @@ public class FirebaseProfileAdapter {
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
 
     Post currentPost; // needs to be here or it causes errors
+    Boolean isFinished = false;
 
     public FirebaseProfileAdapter() {
 
@@ -41,7 +45,6 @@ public class FirebaseProfileAdapter {
         // returns all the posts in the database
 
         ArrayList<Post> allPosts = new ArrayList();
-
         //query the database for all the events
         db.collection("Posts")
                 .get()
@@ -61,13 +64,25 @@ public class FirebaseProfileAdapter {
                                 // create a new Post object of the Post in the database
                                 Post post = new Post(id, title, club, content);
                                 allPosts.add(post);
+                                Log.d("ADDED TO ALL POST: ", String.valueOf(allPosts.size()));
 
 
                             }
+                            isFinished = true;
                         }
+
                     }
                 });
 
+        Log.d("RETURNED POSTS", String.valueOf(allPosts.size()));
+
+        // wait to retrieve the data from firebase
+        try {
+            // THIS ISNT WORKING!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+            TimeUnit.SECONDS.sleep(5);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         return allPosts;
     }
 
@@ -109,6 +124,7 @@ public class FirebaseProfileAdapter {
 
             }
         }
+
 
         return approvedPosts;
 
