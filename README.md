@@ -6,4 +6,4 @@
 * Members: Anita Ferenc, Grace Mullane, Jonathan Martin, Junyao Cui, Kerry Cao
 
 ### Project Description
-TBA
+##How to sign in 
