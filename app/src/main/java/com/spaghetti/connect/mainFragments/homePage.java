@@ -23,6 +23,7 @@ import com.spaghetti.connect.RecyclerViewAdapter;
 import com.spaghetti.connect.data.Post;
 import com.spaghetti.connect.firestoreAdapters.FirebaseProfileAdapter;
 import com.spaghetti.connect.ui.recyclerViewAdapter.BookmarkRvViewAdapter;
+import com.spaghetti.connect.ui.recyclerViewAdapter.HomePageViewAdapter;
 
 import java.util.ArrayList;
 import java.util.Map;
@@ -64,7 +65,7 @@ public class homePage extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        Post p = new Post("Test", "test", "test");
+        Post p = new Post("Test", "test", "test", "test");
         ArrayList<Post> pp = new ArrayList<>();
 
         pp.add(p);
@@ -77,22 +78,17 @@ public class homePage extends Fragment {
         // Inflate the layout for this fragment
         view = inflater.inflate(R.layout.fragment_homepage, container, false);
 
-        /* TODO: get the users */
-
         FirebaseProfileAdapter firebaseProfileAdapter = new FirebaseProfileAdapter();
-        //ArrayList<Map> arrayList = firebaseProfileAdapter.getPosts();
+        ArrayList<Post> allPosts = firebaseProfileAdapter.getPosts();
+        //ArrayList<Post> approvedPosts = firebaseProfileAdapter.checkPost(null, false, allPosts);
 
-        //get posts;
+        /*TODO: display the approved posts*/
 
-        //check all posts (user, all the posts);
-
-        Log.d("IN HOMEPAGE","HERRRE");
         homepagePostRcView = view.findViewById(R.id.recyclerView);
         homepageLayoutManager = new LinearLayoutManager(context);
         homepagePostRcView.setLayoutManager(homepageLayoutManager);
 
-        /*TODO: write separate Bookmark for homepage */
-        homepagePostAdapter = new BookmarkRvViewAdapter(pp);
+        homepagePostAdapter = new HomePageViewAdapter(pp);
         homepagePostRcView.setAdapter(homepagePostAdapter);
 
         return view;
