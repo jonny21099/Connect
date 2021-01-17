@@ -1,10 +1,8 @@
 package com.spaghetti.connect.mainFragments;
 
 import android.content.Context;
-import android.graphics.Bitmap;
 import android.os.Bundle;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -12,11 +10,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import com.spaghetti.connect.R;
 import com.spaghetti.connect.data.Post;
-import com.spaghetti.connect.ui.recyclerViewAdapter.BookmarkRCA;
+import com.spaghetti.connect.ui.recyclerViewAdapter.BookmarkRvViewAdapter;
 
 import java.util.ArrayList;
 
@@ -72,7 +69,7 @@ public class bookmarkPage extends Fragment {
         bookmarkedPostLayoutManager = new LinearLayoutManager(c);
         bookmarkedPostRcView.setLayoutManager(bookmarkedPostLayoutManager);
 
-        bookmarkedPostAdapter = new BookmarkRCA(pp);
+        bookmarkedPostAdapter = new BookmarkRvViewAdapter(pp);
         bookmarkedPostRcView.setAdapter(bookmarkedPostAdapter);
 
 
