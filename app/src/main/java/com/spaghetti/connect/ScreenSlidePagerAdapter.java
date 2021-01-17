@@ -28,7 +28,7 @@ class ScreenSlidePagerAdapter extends FragmentStateAdapter {
     public Fragment createFragment(int position) {
         switch (position) {
             case 0:
-                return new homePage();
+                return new homePage(c);
             case 1:
                 return new bookmarkPage(c);
             case 2:
