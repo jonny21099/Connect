@@ -34,24 +34,55 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_marginTop="15dp"
             android:layout_below="@+id/profile_club_name"
-            android:orientation="horizontal">
-            <com.google.android.material.tabs.TabLayout
-                android:id="@+id/tabMode"
+            android:orientation="vertical">
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="#FF4081"
-                >
-            </com.google.android.material.tabs.TabLayout>
-            <androidx.viewpager2.widget.ViewPager2
-                android:id="@+id/profile_club_pager"
+                android:layout_marginTop="15dp"
+                android:text="Club Email:"
+                android:textSize="32sp" />
+            <TextView
+                android:id="@+id/club_email"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_gravity="bottom"
-                android:layout_marginTop="15dp"/>
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:hint="Club Email"
+                android:textSize="32sp"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:text="Club Description:"
+                android:textSize="32sp"/>
+            <TextView
+                android:id="@+id/club_des"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:hint="Club Description"
+                android:textSize="32sp"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
 
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="60dp"
+                    android:backgroundTint="#FFFFFF"
+                    android:text="Create Post" />
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:backgroundTint="#FFFFFF"
+                    android:text="View Events" />
+            </LinearLayout>
 
         </LinearLayout>
 

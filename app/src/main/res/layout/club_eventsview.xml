@@ -15,6 +15,7 @@
         android:layout_marginTop="5dp"
         android:layout_marginBottom="10dp">
         <Button
+            android:id="@+id/create"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="60dp"
@@ -22,6 +23,7 @@
             android:text="Create Post"
             android:textAlignment="center" />
         <Button
+            android:id="@+id/view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
