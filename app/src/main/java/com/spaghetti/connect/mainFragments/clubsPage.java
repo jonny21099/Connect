@@ -1,10 +1,8 @@
 package com.spaghetti.connect.mainFragments;
 
-import android.app.AlertDialog;
 import android.content.Context;
 import android.os.Bundle;
 
-import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -14,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.spaghetti.connect.data.ObservableArrayList;
 import com.spaghetti.connect.R;
 import com.spaghetti.connect.data.Club;
@@ -33,11 +32,11 @@ import java.util.Observer;
 public class clubsPage extends Fragment {
     private View view;
     private Context c;
+    FirebaseFirestore db;
 
     RecyclerView clubsRcView;
     RecyclerView.Adapter clubsAdapter;
     RecyclerView.LayoutManager clubsLayoutManager;
-    Button acceptClubBtn;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -98,12 +97,9 @@ public class clubsPage extends Fragment {
 
         // Inflate the layout for this fragment
         view = inflater.inflate(R.layout.fragment_clubspage, container, false);
-
         clubsRcView = view.findViewById(R.id.clubRecyclerView);
         clubsLayoutManager = new LinearLayoutManager(c);
         clubsRcView.setLayoutManager(clubsLayoutManager);
-
-        acceptClubBtn.findViewById(R.id.joinClubBtn);
 
         return view;
     }

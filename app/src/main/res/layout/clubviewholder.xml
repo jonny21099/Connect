@@ -51,12 +51,13 @@
                 app:layout_constraintTop_toBottomOf="@id/clubName" />
 
             <Button
-                android:id="@+id/joinClubBtn"
+                android:id="@+id/moreInfoBtn"
                 android:layout_width="175dp"
                 android:layout_height="60dp"
                 android:layout_marginTop="135dp"
-                android:text="Join Club"
+                android:text="join"
                 android:textAlignment="inherit"
+                android:textColor="@color/white"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />

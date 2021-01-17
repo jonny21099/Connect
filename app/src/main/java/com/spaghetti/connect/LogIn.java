@@ -2,6 +2,7 @@ package com.spaghetti.connect;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -45,12 +46,12 @@ public class LogIn extends AppCompatActivity {
             public void onClick(View v) {
                 String email = logInEmailInput.getText().toString();
                 String password = logInPasswordInput.getText().toString();
-
                 BinarySignal signal = new BinarySignal();
                 Observer onCompleteListener = new Observer() {
                     @Override
                     public void update(Observable o, Object arg) {
                         if (signal.getState()) {
+                            Log.e(TAG,"it worked");
                             Intent i = new Intent(LogIn.this, MainActivity.class);
                             startActivity(i);
                             finishAffinity();
