@@ -107,7 +107,6 @@ public class userprofilePage extends Fragment {
 //                Username = profile.getDisplayName();
 //                Email = profile.getEmail();
             }
-
         }
         db = FirebaseFirestore.getInstance();
         DocumentReference userRef = db.collection("UesrProfile").document(uid);

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:ndroid="http://schemas.android.com/apk/res-auto"
+    tools:context=".mainFragments.userprofilePage">
+    <com.android.volley.toolbox.NetworkImageView
+        android:id="@+id/profile_club_image"
+        android:layout_width="match_parent"
+        android:layout_height="175dp"
+        android:background="?attr/colorPrimary"
+        android:scaleType="centerCrop" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="91dp">
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/profile_club_icon"
+            android:layout_width="168dp"
+            android:layout_height="168dp"
+            android:layout_centerHorizontal="true"
+            android:gravity="center_horizontal" />
+        <TextView
+            android:id="@+id/profile_club_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/profile_club_icon"
+            android:layout_marginTop="15dp"
+            android:text="ClubName"
+            android:textSize="32sp"
+            android:layout_centerHorizontal="true"
+            android:gravity="center_horizontal" />
+        <com.google.android.material.tabs.TabLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/profile_club_name"
+            android:layout_marginTop="15dp">
+            <com.google.android.material.tabs.TabItem
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Details"
+                />
+
+            <com.google.android.material.tabs.TabItem
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Events"
+                />
+
+            <com.google.android.material.tabs.TabItem
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Albums"
+                />
+        </com.google.android.material.tabs.TabLayout>
+
+    </RelativeLayout>
+
+
+
+
+</FrameLayout>
