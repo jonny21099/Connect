@@ -29,8 +29,8 @@ public class BookmarkRvViewAdapter extends RecyclerView.Adapter<BookmarkRvViewAd
             super(requestView);
             image = requestView.findViewById(R.id.postViewHolderImage);
             layout = requestView.findViewById(R.id.postViewHolderLayout);
-            title = requestView.findViewById(R.id.postViewHolderTitle);
-            content = requestView.findViewById(R.id.postViewHolderContent);
+            title = requestView.findViewById(R.id.postTitle);
+            content = requestView.findViewById(R.id.clubName);
         }
     }
 
