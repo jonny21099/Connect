@@ -10,6 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.material.card.MaterialCardView;
 import com.spaghetti.connect.R;
 import com.spaghetti.connect.data.Post;
 
@@ -20,7 +21,7 @@ public class BookmarkRCA extends RecyclerView.Adapter<BookmarkRCA.PostViewHolder
     ArrayList<Post> data;
 
     public static class PostViewHolder extends RecyclerView.ViewHolder {
-        ConstraintLayout layout;
+        MaterialCardView layout;
         ImageView image;
         TextView title;
         TextView content;
