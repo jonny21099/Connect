@@ -48,17 +48,11 @@ public class AuthHelper {
     }
 
     public static void passwordReset(String email, @NotNull FirebaseAuth FA, BinarySignal signal) {
-        FA.sendPasswordResetEmail(email).addOnSuccessListener(new OnSuccessListener<Void>() {
-            @Override
-            public void onSuccess(Void aVoid) {
-                signal.broadcast(true);
-            }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-                Log.d(tag, e.toString());
-                signal.broadcast(false);
-            }
+        FA.sendPasswordResetEmail(email).addOnSuccessListener(aVoid -> {
+            signal.broadcast(true);
+        }).addOnFailureListener(e -> {
+            Log.d(tag, e.toString());
+            signal.broadcast(false);
         });
     }
 }
