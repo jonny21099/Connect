@@ -7,7 +7,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.constraintlayout.widget.ConstraintLayout;
+
+import com.google.android.material.card.MaterialCardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.spaghetti.connect.R;
@@ -20,7 +21,7 @@ public class ClubsRCA extends RecyclerView.Adapter<ClubsRCA.PostViewHolder> {
     ArrayList<Club> data;
 
     public static class PostViewHolder extends RecyclerView.ViewHolder {
-        ConstraintLayout layout;
+        MaterialCardView layout;
         ImageView image;
         TextView description;
         TextView name;
@@ -29,8 +30,8 @@ public class ClubsRCA extends RecyclerView.Adapter<ClubsRCA.PostViewHolder> {
             super(requestView);
             layout = requestView.findViewById(R.id.postViewHolderLayout);
             image = requestView.findViewById(R.id.postViewHolderImage);
-            name = requestView.findViewById(R.id.postViewHolderTitle);
-            description = requestView.findViewById(R.id.postViewHolderContent);
+            name = requestView.findViewById(R.id.postTitle);
+            description = requestView.findViewById(R.id.postDesc);
         }
     }
 
