@@ -20,7 +20,14 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.spaghetti.connect.LogIn;
 import com.spaghetti.connect.R;
+import com.spaghetti.connect.data.BinarySignal;
 import com.spaghetti.connect.firebaseAuth.AuthHelper;
+import com.spaghetti.connect.utility.userClubProfileAdapter;
+
+import java.util.Observable;
+import java.util.Observer;
+
+import static androidx.constraintlayout.motion.utils.Oscillator.TAG;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -76,9 +83,11 @@ public class userprofilePage extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_userprofilepage, container, false);
         Button logout = view.findViewById(R.id.logoutBtn);
+
         logout.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
+
                 AuthHelper.signOut(currentUser);
                 Intent a = new Intent(getActivity(), LogIn.class);
                 startActivity(a);
